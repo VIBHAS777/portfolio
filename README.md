@@ -93,8 +93,3 @@ Visit the live deployed portfolio:
 - **GitHub**: [@VIBHAS777](https://github.com/VIBHAS777)
 - **Email**: [vibhasf17@gmail.com](mailto:vibhasf17@gmail.com)
 - **Portfolio**: [https://portfolio-vibhasf17-4811.vercel.app/](https://portfolio-vibhasf17-4811.vercel.app/)
-
----
-
-## 📄 License
-This project is open-source and available under the [MIT License](LICENSE).
