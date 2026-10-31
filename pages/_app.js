@@ -28,7 +28,7 @@ export default function App({ Component, pageProps }) {
 		"Portfolio of Vibhas Reddy Araveeti — Engineer & AI/ML Researcher and CS undergraduate at Amrita Vishwa Vidyapeetham with 12+ peer-reviewed publications.";
 	const avatar =
 		"/assets/avatar.png";
-	const url = "https://vibhasreddy.dev";
+	const url = "https://portfolio-vibhasf17-4811.vercel.app";
 
 	return (
 		<>

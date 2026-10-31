@@ -1,6 +1,13 @@
 {
-    "name": "3d-portfolio",
-    "version": "0.1.0",
+    "name": "vibhas-reddy-portfolio",
+    "version": "1.0.0",
+    "description": "3D Portfolio of Vibhas Reddy Araveeti — AI/ML & Clinical AI Researcher",
+    "author": "Vibhas Reddy Araveeti <vibhasf17@gmail.com>",
+    "homepage": "https://portfolio-vibhasf17-4811.vercel.app/",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/VIBHAS777/portfolio.git"
+    },
     "private": true,
     "scripts": {
         "dev": "next dev",
