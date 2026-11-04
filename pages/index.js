@@ -336,7 +336,7 @@ export default function Home() {
               <article className="pub-card reveal">
                 <div className="pub-media" data-media-type="image">
                   <img
-                    src="/assets/projects/medical-imaging-mri-skin.png"
+                    src="/assets/projects/medical-imaging-mri-skin.jpg"
                     alt="Brain Tumor and Skin Disease Diagnosis with Grad-CAM Visualizations"
                     loading="lazy"
                   />
@@ -353,23 +353,9 @@ export default function Home() {
                   <p className="pub-authors">
                     Aug 2024 – Dec 2024 • <strong>94% Brain Tumor Accuracy</strong> • <strong>99% Skin Disease Accuracy</strong> • <strong>0.993 AUC</strong>
                   </p>
-                  <p style={{ fontSize: "0.9rem", color: "var(--text-secondary)", margin: "0.5rem 0 0.85rem", lineHeight: "1.6" }}>
+                  <p style={{ fontSize: "0.9rem", color: "var(--text-secondary)", margin: "0.5rem 0 0", lineHeight: "1.6" }}>
                     Developed a unified deep learning pipeline for brain tumor and skin disease diagnosis, applying transfer learning with VGG16, ResNet-50, and EfficientNet architectures to address cross-domain variability. Evaluated across MRI and dermoscopic datasets, using Grad-CAM class activation mapping to visually localize critical pathology regions driving model decisions.
                   </p>
-                  <div className="pub-links">
-                    <a
-                      className="pub-link"
-                      href="https://github.com/VIBHAS777/portfolio"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                        <polyline points="16 18 22 12 16 6" />
-                        <polyline points="8 6 2 12 8 18" />
-                      </svg>
-                      Code / Model Details
-                    </a>
-                  </div>
                 </div>
               </article>
 
@@ -377,7 +363,7 @@ export default function Home() {
               <article className="pub-card featured reveal">
                 <div className="pub-media" data-media-type="image">
                   <img
-                    src="/assets/projects/health-misinformation-llama.png"
+                    src="/assets/projects/health-misinformation-llama.jpg"
                     alt="Health Misinformation Detection with BioBERT and Llama-3"
                     loading="lazy"
                   />
@@ -396,31 +382,9 @@ export default function Home() {
                   <p className="pub-authors">
                     Dec 2025 – Feb 2026 • <strong>83.91% Accuracy</strong> • <strong>0.7831 Macro-F1</strong> • <strong>BioBERT Refute F1: 0.7264</strong>
                   </p>
-                  <p style={{ fontSize: "0.9rem", color: "var(--text-secondary)", margin: "0.5rem 0 0.85rem", lineHeight: "1.6" }}>
+                  <p style={{ fontSize: "0.9rem", color: "var(--text-secondary)", margin: "0.5rem 0 0", lineHeight: "1.6" }}>
                     Compared biomedical transformer models (BioBERT, RoBERTa, SciBERT, and ClinicalBERT) against Meta-Llama-3-8B-Instruct for 3-class claim verification (Support, Refute, Neutral). Zero-shot Meta-Llama-3-8B-Instruct reached 83.91% accuracy and 0.7831 Macro-F1, while data augmentation boosted BioBERT Refute-class F1 to 0.7264. Awarded Best Paper at IEEE ICKECS 2026.
                   </p>
-                  <div className="pub-links">
-                    <a
-                      className="pub-link"
-                      href="/document/Vibhas-Reddy-Resume.pdf"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                        <polyline points="14 2 14 8 20 8" />
-                      </svg>
-                      Paper
-                    </a>
-                    <a
-                      className="pub-link"
-                      href="https://github.com/VIBHAS777/portfolio"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Code
-                    </a>
-                  </div>
                 </div>
               </article>
 
@@ -428,7 +392,7 @@ export default function Home() {
               <article className="pub-card reveal">
                 <div className="pub-media" data-media-type="image">
                   <img
-                    src="/assets/projects/hardware-seizure-max30102.png"
+                    src="/assets/projects/hardware-seizure-max30102.jpg"
                     alt="Low-Cost Multimodal Seizure Detection with MAX30102 and Accelerometry"
                     loading="lazy"
                   />
@@ -445,23 +409,9 @@ export default function Home() {
                   <p className="pub-authors">
                     Feb 2026 – May 2026 • <strong>Dual-Threshold Signal Fusion</strong> • <strong>Continuous Non-Clinical Monitoring</strong>
                   </p>
-                  <p style={{ fontSize: "0.9rem", color: "var(--text-secondary)", margin: "0.5rem 0 0.85rem", lineHeight: "1.6" }}>
+                  <p style={{ fontSize: "0.9rem", color: "var(--text-secondary)", margin: "0.5rem 0 0", lineHeight: "1.6" }}>
                     Engineered an accessible wearable prototype integrating MAX30102 photoplethysmography (heart-rate/pulse) and MPU6050 accelerometry with an Arduino Uno. Developed a dual physiological threshold sensor fusion algorithm that cuts false alarms caused by isolated heart-rate spikes or regular body movement, triggering concurrent real-time audiovisual alerts with event timestamping.
                   </p>
-                  <div className="pub-links">
-                    <a
-                      className="pub-link"
-                      href="https://github.com/VIBHAS777/portfolio"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                        <polyline points="16 18 22 12 16 6" />
-                        <polyline points="8 6 2 12 8 18" />
-                      </svg>
-                      Schematics &amp; Code
-                    </a>
-                  </div>
                 </div>
               </article>
 
@@ -469,7 +419,7 @@ export default function Home() {
               <article className="pub-card reveal">
                 <div className="pub-media" data-media-type="image">
                   <img
-                    src="/assets/projects/rnn-cpu-deadlock.png"
+                    src="/assets/projects/rnn-cpu-deadlock.jpg"
                     alt="RNN-Based Deadlock Detection for CPU Performance Optimization"
                     loading="lazy"
                   />
@@ -486,23 +436,9 @@ export default function Home() {
                   <p className="pub-authors">
                     Feb 2025 – May 2025 • <strong>90.25% Test Accuracy</strong> • <strong>CPU Score: 70 → 98.02 (+28.02% Boost)</strong>
                   </p>
-                  <p style={{ fontSize: "0.9rem", color: "var(--text-secondary)", margin: "0.5rem 0 0.85rem", lineHeight: "1.6" }}>
+                  <p style={{ fontSize: "0.9rem", color: "var(--text-secondary)", margin: "0.5rem 0 0", lineHeight: "1.6" }}>
                     Architected a Python/PyTorch system that translated simulated OS process and resource logs into sequential one-hot encoded vectors, capturing temporal dependency patterns. A 2-layer recurrent neural network predicts impending circular-wait deadlocks with 90.25% accuracy, allowing preemptive resolution that raised simulated CPU benchmark performance from 70 to 98.02.
                   </p>
-                  <div className="pub-links">
-                    <a
-                      className="pub-link"
-                      href="https://github.com/VIBHAS777/portfolio"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                        <polyline points="16 18 22 12 16 6" />
-                        <polyline points="8 6 2 12 8 18" />
-                      </svg>
-                      Repository
-                    </a>
-                  </div>
                 </div>
               </article>
 
@@ -510,7 +446,7 @@ export default function Home() {
               <article className="pub-card reveal">
                 <div className="pub-media" data-media-type="image">
                   <img
-                    src="/assets/projects/priority-sdn-healthcare.png"
+                    src="/assets/projects/priority-sdn-healthcare.jpg"
                     alt="Priority-Aware SDN Performance Degradation Analysis"
                     loading="lazy"
                   />
@@ -527,23 +463,9 @@ export default function Home() {
                   <p className="pub-authors">
                     Jan 2026 – Jun 2026 • <strong>P95 Latency: -40%</strong> • <strong>Jitter: -84%</strong> • <strong>100% On-Time Delivery</strong>
                   </p>
-                  <p style={{ fontSize: "0.9rem", color: "var(--text-secondary)", margin: "0.5rem 0 0.85rem", lineHeight: "1.6" }}>
+                  <p style={{ fontSize: "0.9rem", color: "var(--text-secondary)", margin: "0.5rem 0 0", lineHeight: "1.6" }}>
                     Engineered a priority-aware SDN framework combining Dijkstra dynamic routing with tabular Q-learning to dynamically adapt queue weights across four healthcare IoT traffic tiers under fluctuating network congestion. Lowered P95 latency by 40% and jitter by 84% at peak saturation while ensuring 100% on-time packet arrival for mission-critical telemetry.
                   </p>
-                  <div className="pub-links">
-                    <a
-                      className="pub-link"
-                      href="https://github.com/VIBHAS777/portfolio"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                        <polyline points="16 18 22 12 16 6" />
-                        <polyline points="8 6 2 12 8 18" />
-                      </svg>
-                      Architecture &amp; Code
-                    </a>
-                  </div>
                 </div>
               </article>
 
@@ -551,7 +473,7 @@ export default function Home() {
               <article className="pub-card reveal">
                 <div className="pub-media" data-media-type="image">
                   <img
-                    src="/assets/projects/unified-disease-pipeline.png"
+                    src="/assets/projects/unified-disease-pipeline.jpg"
                     alt="Unified Disease Prediction Pipeline for Heart Disease, Diabetes, and Alzheimer's"
                     loading="lazy"
                   />
@@ -568,23 +490,9 @@ export default function Home() {
                   <p className="pub-authors">
                     Aug 2025 – Nov 2025 • <strong>89.3% Overall Accuracy</strong> • <strong>0.887 F1-Score</strong> • <strong>Multi-Dataset Evaluation</strong>
                   </p>
-                  <p style={{ fontSize: "0.9rem", color: "var(--text-secondary)", margin: "0.5rem 0 0.85rem", lineHeight: "1.6" }}>
+                  <p style={{ fontSize: "0.9rem", color: "var(--text-secondary)", margin: "0.5rem 0 0", lineHeight: "1.6" }}>
                     Built an end-to-end clinical machine learning pipeline for early multi-condition disease screening across heart disease, diabetes mellitus, and Alzheimer's disease. Implemented standardized preprocessing, feature engineering, and SMOTE class-imbalance correction, rigorously comparing predictive performance across three distinct clinical cohorts.
                   </p>
-                  <div className="pub-links">
-                    <a
-                      className="pub-link"
-                      href="https://github.com/VIBHAS777/portfolio"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                        <polyline points="16 18 22 12 16 6" />
-                        <polyline points="8 6 2 12 8 18" />
-                      </svg>
-                      GitHub Repo
-                    </a>
-                  </div>
                 </div>
               </article>
             </div>
@@ -601,245 +509,465 @@ export default function Home() {
               Peer-reviewed papers published in Q1-indexed journals and international IEEE conferences (12 publications).
             </p>
 
-            <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+            <div className="pub-grid">
               {/* Publication 1: Q1 Engineered Science */}
-              <div className="pub-card featured reveal" style={{ padding: "1.25rem" }}>
-                <div>
+              <article className="pub-card featured reveal">
+                <div className="pub-media" data-media-type="image">
+                  <img
+                    src="/assets/papers/paper-01-heart-disease-dl.jpg"
+                    alt="Heart Disease Risk Prediction Using Deep Learning"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="pub-content">
                   <div className="pub-tags">
-                    <span className="pub-tag" style={{ color: "#059669", borderColor: "#059669", fontWeight: "700" }}>
-                      Q1 Journal
-                    </span>
-                    <span className="pub-tag">Engineered Science</span>
-                    <span className="pub-tag">DOI: 10.30919/es2461</span>
+                    <span className="pub-tag">Engineered Science (Q1)</span>
                   </div>
-                  <h3 className="pub-title" style={{ fontSize: "1.1rem" }}>
-                    [1] Heart Disease Risk Prediction Using Deep Learning and Probabilistic Calibration Techniques
+                  <h3 className="pub-title">
+                    Heart Disease Risk Prediction Using Deep Learning and Probabilistic Calibration Techniques
                   </h3>
                   <p className="pub-authors">
-                    <strong>Vibhas Reddy Araveeti</strong>, Dr. B. Venkatesh, et al.
+                    <strong>Vibhas Reddy Araveeti</strong>, Dr. B. Venkatesh
                   </p>
                   <p className="pub-venue">
-                    <em>Engineered Science</em> (Q1 Journal, 2025)
+                    <em>Engineered Science</em>, Q1 journal (2025) • DOI: 10.30919/es2461
                   </p>
-                  <p style={{ fontSize: "0.88rem", color: "var(--text-secondary)", marginTop: "0.4rem" }}>
-                    Bagged MLP ensemble framework integrating Bayesian bootstrap aggregation with Platt scaling, isotonic regression, and histogram binning. Achieved 96.42% accuracy, 0.0489 Brier score, 0.97 recall, and 3% false negative rate.
-                  </p>
+                  <div className="pub-links">
+                    <a
+                      href="https://www.espublisher.com/journals/articledetails/2461"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="pub-link"
+                    >
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                      </svg>
+                      Paper
+                    </a>
+                  </div>
                 </div>
-              </div>
+              </article>
 
-              {/* Publication 2: ICKECS 2026 Best Paper */}
-              <div className="pub-card featured reveal" style={{ padding: "1.25rem" }}>
-                <div>
+              {/* Publication 2: IEEE ICSSAS 2026 */}
+              <article className="pub-card reveal">
+                <div className="pub-media" data-media-type="image">
+                  <img
+                    src="/assets/papers/paper-02-waste-detection-icssas.jpg"
+                    alt="AI-Powered Waste Detection and Sorting"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="pub-content">
+                  <div className="pub-tags">
+                    <span className="pub-tag">IEEE ICSSAS 2026</span>
+                  </div>
+                  <h3 className="pub-title">
+                    AI-Powered Waste Detection and Sorting Using Object Detection
+                  </h3>
+                  <p className="pub-authors">
+                    <strong>Vibhas Reddy Araveeti</strong>, et al.
+                  </p>
+                  <p className="pub-venue">
+                    in Proc. IEEE Int. Conf. Self-Sustainable Artificial Intelligence Systems (ICSSAS), 2026
+                  </p>
+                  <div className="pub-links">
+                    <a
+                      href="https://ieeexplore.ieee.org/document/11559513"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="pub-link"
+                    >
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                      </svg>
+                      Paper
+                    </a>
+                  </div>
+                </div>
+              </article>
+
+              {/* Publication 3: ICKECS 2026 Best Paper */}
+              <article className="pub-card featured reveal">
+                <div className="pub-media" data-media-type="image">
+                  <img
+                    src="/assets/papers/paper-03-health-misinfo-ickecs.jpg"
+                    alt="Detecting Health Misinformation"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="pub-content">
                   <div className="pub-tags">
                     <span className="pub-tag" style={{ background: "rgba(2, 132, 199, 0.12)", color: "var(--accent)", borderColor: "var(--accent)", fontWeight: "700" }}>
                       🏆 Best Paper Award
                     </span>
                     <span className="pub-tag">IEEE ICKECS 2026</span>
                   </div>
-                  <h3 className="pub-title" style={{ fontSize: "1.1rem" }}>
-                    [2] Detecting Health Misinformation: AI Solutions for Medical and Policy Content
+                  <h3 className="pub-title">
+                    Detecting Health Misinformation: AI Solutions for Medical and Policy Content
                   </h3>
                   <p className="pub-authors">
                     <strong>Vibhas Reddy Araveeti</strong>, et al.
                   </p>
                   <p className="pub-venue">
-                    Proc. IEEE International Conference on Knowledge Engineering and Communication Systems (ICKECS), 2026
+                    in Proc. IEEE Int. Conf. Knowledge Engineering and Communication Systems (ICKECS), 2026. Best Paper Award.
                   </p>
-                  <p style={{ fontSize: "0.88rem", color: "var(--text-secondary)", marginTop: "0.4rem" }}>
-                    Comparative study of biomedical transformers and Meta-Llama-3-8B-Instruct for 3-class claim verification (Support, Refute, Neutral), achieving 83.91% accuracy and 0.7831 Macro-F1.
-                  </p>
-                </div>
-              </div>
-
-              {/* Publication 3: Brain Tumor & Skin Image Analysis */}
-              <div className="pub-card reveal" style={{ padding: "1.25rem" }}>
-                <div>
-                  <div className="pub-tags">
-                    <span className="pub-tag">ICITEICS 2026</span>
-                    <span className="pub-tag">Grad-CAM &amp; Transfer Learning</span>
+                  <div className="pub-links">
+                    <a
+                      href="https://ieeexplore.ieee.org/document/11528010"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="pub-link"
+                    >
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                      </svg>
+                      Paper
+                    </a>
                   </div>
-                  <h3 className="pub-title" style={{ fontSize: "1.05rem" }}>
-                    [3] Automated Medical Image Analysis for Brain Tumor and Skin Disease Diagnosis Using Transfer Learning and Grad-CAM
-                  </h3>
-                  <p className="pub-authors">
-                    <strong>Vibhas Reddy Araveeti</strong>, et al.
-                  </p>
-                  <p className="pub-venue">
-                    Presented at the 3rd International Conference on Innovative Trends in Electronics, Information and Communication Systems (ICITEICS), 2026
-                  </p>
                 </div>
-              </div>
+              </article>
 
-              {/* Publication 4: Seizure Detection System */}
-              <div className="pub-card reveal" style={{ padding: "1.25rem" }}>
-                <div>
-                  <div className="pub-tags">
-                    <span className="pub-tag">ICACS 2026</span>
-                    <span className="pub-tag">IoT Hardware</span>
-                  </div>
-                  <h3 className="pub-title" style={{ fontSize: "1.05rem" }}>
-                    [4] A Low-Cost Real-Time Multimodal Seizure Detection System Using MAX30102 and Accelerometry
-                  </h3>
-                  <p className="pub-authors">
-                    <strong>Vibhas Reddy Araveeti</strong>, et al.
-                  </p>
-                  <p className="pub-venue">
-                    Under review at the International Conference on Advanced Computing and Systems (ICACS), 2026
-                  </p>
+              {/* Publication 4: IEEE I3CTCON 2026 */}
+              <article className="pub-card reveal">
+                <div className="pub-media" data-media-type="image">
+                  <img
+                    src="/assets/papers/paper-04-malayalam-ocr-i3ctcon.jpg"
+                    alt="Malayalam Handwritten Character Recognition"
+                    loading="lazy"
+                  />
                 </div>
-              </div>
-
-              {/* Publication 5: Deadlock Detection ICCCNT */}
-              <div className="pub-card reveal" style={{ padding: "1.25rem" }}>
-                <div>
-                  <div className="pub-tags">
-                    <span className="pub-tag">ICCCNT 2025</span>
-                    <span className="pub-tag">RNN &amp; CPU Optimization</span>
-                  </div>
-                  <h3 className="pub-title" style={{ fontSize: "1.05rem" }}>
-                    [5] Enhancing CPU Benchmark Scores Using RNN-Based Deadlock Detection from System Logs
-                  </h3>
-                  <p className="pub-authors">
-                    <strong>Vibhas Reddy Araveeti</strong>, et al.
-                  </p>
-                  <p className="pub-venue">
-                    Presented at the 16th International Conference on Computing, Communication and Networking Technologies (ICCCNT), 2025
-                  </p>
-                </div>
-              </div>
-
-              {/* Publication 6: Priority-Aware SDN */}
-              <div className="pub-card reveal" style={{ padding: "1.25rem" }}>
-                <div>
-                  <div className="pub-tags">
-                    <span className="pub-tag">ICUIS 2026</span>
-                    <span className="pub-tag">Healthcare SDN</span>
-                  </div>
-                  <h3 className="pub-title" style={{ fontSize: "1.05rem" }}>
-                    [6] Stability Threshold and Performance Degradation Analysis of Priority-Aware SDN in Healthcare IoT Systems
-                  </h3>
-                  <p className="pub-authors">
-                    <strong>Vibhas Reddy Araveeti</strong>, et al.
-                  </p>
-                  <p className="pub-venue">
-                    Accepted at the International Conference on Ubiquitous and Intelligent Systems (ICUIS), 2026
-                  </p>
-                </div>
-              </div>
-
-              {/* Publication 7: Unified ML Disease Pipeline */}
-              <div className="pub-card reveal" style={{ padding: "1.25rem" }}>
-                <div>
-                  <div className="pub-tags">
-                    <span className="pub-tag">ICRTAC 2026</span>
-                    <span className="pub-tag">Clinical Screening</span>
-                  </div>
-                  <h3 className="pub-title" style={{ fontSize: "1.05rem" }}>
-                    [7] A Unified Machine Learning Pipeline for Early Prediction of Heart Disease, Diabetes Mellitus, and Alzheimer's Disease
-                  </h3>
-                  <p className="pub-authors">
-                    <strong>Vibhas Reddy Araveeti</strong>, et al.
-                  </p>
-                  <p className="pub-venue">
-                    Under review at the International Conference on Research in Trends in Advanced Computing (ICRTAC), 2026
-                  </p>
-                </div>
-              </div>
-
-              {/* Publication 8: Waste Detection IEEE */}
-              <div className="pub-card reveal" style={{ padding: "1.25rem" }}>
-                <div>
-                  <div className="pub-tags">
-                    <span className="pub-tag">IEEE ICSSAS 2026</span>
-                    <span className="pub-tag">Object Detection</span>
-                  </div>
-                  <h3 className="pub-title" style={{ fontSize: "1.05rem" }}>
-                    [8] AI-Powered Waste Detection and Sorting Using Object Detection
-                  </h3>
-                  <p className="pub-authors">
-                    <strong>Vibhas Reddy Araveeti</strong>, et al.
-                  </p>
-                  <p className="pub-venue">
-                    Proc. IEEE International Conference on Self-Sustainable Artificial Intelligence Systems (ICSSAS), 2026
-                  </p>
-                </div>
-              </div>
-
-              {/* Publication 9: Malayalam Handwritten OCR */}
-              <div className="pub-card reveal" style={{ padding: "1.25rem" }}>
-                <div>
+                <div className="pub-content">
                   <div className="pub-tags">
                     <span className="pub-tag">IEEE I3CTCON 2026</span>
-                    <span className="pub-tag">ConvNeXt-PCA-RF</span>
                   </div>
-                  <h3 className="pub-title" style={{ fontSize: "1.05rem" }}>
-                    [9] Efficient Malayalam Handwritten Character Recognition Using ConvNeXt-PCA-RandomForest Architecture
+                  <h3 className="pub-title">
+                    Efficient Malayalam Handwritten Character Recognition Using ConvNeXt-PCA-RandomForest Architecture
                   </h3>
                   <p className="pub-authors">
                     <strong>Vibhas Reddy Araveeti</strong>, et al.
                   </p>
                   <p className="pub-venue">
-                    Proc. IEEE International Conference on Convergence in Computing Technology (I3CTCON), 2026
+                    in Proc. IEEE Int. Conf. Convergence in Computing Technology (I3CTCON), 2026
                   </p>
+                  <div className="pub-links">
+                    <a
+                      href="https://ieeexplore.ieee.org/document/11507971"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="pub-link"
+                    >
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                      </svg>
+                      Paper
+                    </a>
+                  </div>
                 </div>
-              </div>
+              </article>
 
-              {/* Publication 10: Congestion Prediction in Data Centers */}
-              <div className="pub-card reveal" style={{ padding: "1.25rem" }}>
-                <div>
+              {/* Publication 5: ICCCNT 2025 */}
+              <article className="pub-card reveal">
+                <div className="pub-media" data-media-type="image">
+                  <img
+                    src="/assets/papers/paper-05-cpu-deadlock-icccnt.jpg"
+                    alt="Enhancing CPU Benchmark Scores Using RNN-Based Deadlock Detection"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="pub-content">
                   <div className="pub-tags">
-                    <span className="pub-tag">ICON INDIA 2026</span>
-                    <span className="pub-tag">Data Center SDN</span>
+                    <span className="pub-tag">ICCCNT 2025</span>
                   </div>
-                  <h3 className="pub-title" style={{ fontSize: "1.05rem" }}>
-                    [10] Intelligent Congestion Prediction and Control in Data Center Networks Using SDN and Deep Learning
+                  <h3 className="pub-title">
+                    Enhancing CPU Benchmark Scores Using RNN-Based Deadlock Detection from System Logs
                   </h3>
                   <p className="pub-authors">
                     <strong>Vibhas Reddy Araveeti</strong>, et al.
                   </p>
                   <p className="pub-venue">
-                    Accepted at IEEE ICON INDIA, 2026
+                    presented at the 16th ICCCNT, 2025
                   </p>
-                </div>
-              </div>
-
-              {/* Publication 11: Blockchain Banking Load Balancer */}
-              <div className="pub-card reveal" style={{ padding: "1.25rem" }}>
-                <div>
-                  <div className="pub-tags">
-                    <span className="pub-tag">ICECA 2026</span>
-                    <span className="pub-tag">Blockchain &amp; AI</span>
+                  <div className="pub-links">
+                    <a
+                      href="https://github.com/VIBHAS777/research-papers/tree/main/05-RNN-Based-Deadlock-Detection"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="pub-link"
+                    >
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                      </svg>
+                      Paper
+                    </a>
                   </div>
-                  <h3 className="pub-title" style={{ fontSize: "1.05rem" }}>
-                    [11] AI-Driven Load Balancer with Blockchain-Based Decision Making in Banking System
-                  </h3>
-                  <p className="pub-authors">
-                    <strong>Vibhas Reddy Araveeti</strong>, et al.
-                  </p>
-                  <p className="pub-venue">
-                    Presented at the 10th International Conference on Electronics, Communication and Aerospace Technology (ICECA), 2026
-                  </p>
                 </div>
-              </div>
+              </article>
 
-              {/* Publication 12: Space Shuttle External Tank */}
-              <div className="pub-card reveal" style={{ padding: "1.25rem" }}>
-                <div>
+              {/* Publication 6: ICAANA 2025 */}
+              <article className="pub-card reveal">
+                <div className="pub-media" data-media-type="image">
+                  <img
+                    src="/assets/papers/paper-06-space-shuttle-icaana.jpg"
+                    alt="Optimization of Space Shuttle External Tank Design ROI"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="pub-content">
                   <div className="pub-tags">
                     <span className="pub-tag">ICAANA 2025</span>
-                    <span className="pub-tag">SLSQP Optimization</span>
                   </div>
-                  <h3 className="pub-title" style={{ fontSize: "1.05rem" }}>
-                    [12] Optimization of Space Shuttle External Tank Design Return on Investment (ROI)
+                  <h3 className="pub-title">
+                    Optimization of Space Shuttle External Tank Design Return on Investment (ROI)
                   </h3>
                   <p className="pub-authors">
                     <strong>Vibhas Reddy Araveeti</strong>, et al.
                   </p>
                   <p className="pub-venue">
-                    Presented at the International Conference on Applied Analysis and Numerical Analytics (ICAANA), 2025
+                    presented at ICAANA, 2025
                   </p>
+                  <div className="pub-links">
+                    <a
+                      href="https://github.com/VIBHAS777/research-papers/blob/main/06-Space-Shuttle-External-Tank-ROI/Optimization_of_Space_Shuttle_External_Tank_Design_ROI.pdf"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="pub-link"
+                    >
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                      </svg>
+                      Paper
+                    </a>
+                  </div>
                 </div>
-              </div>
+              </article>
+
+              {/* Publication 7: ICITEICS 2026 */}
+              <article className="pub-card reveal">
+                <div className="pub-media" data-media-type="image">
+                  <img
+                    src="/assets/papers/paper-07-medical-imaging-iciteics.jpg"
+                    alt="Automated Medical Image Analysis for Brain Tumor and Skin Disease"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="pub-content">
+                  <div className="pub-tags">
+                    <span className="pub-tag">ICITEICS 2026</span>
+                  </div>
+                  <h3 className="pub-title">
+                    Automated Medical Image Analysis for Brain Tumor and Skin Disease Diagnosis Using Transfer Learning and Grad-CAM
+                  </h3>
+                  <p className="pub-authors">
+                    <strong>Vibhas Reddy Araveeti</strong>, et al.
+                  </p>
+                  <p className="pub-venue">
+                    presented at the 3rd ICITEICS, 2026
+                  </p>
+                  <div className="pub-links">
+                    <a
+                      href="https://github.com/VIBHAS777/research-papers/tree/main/07-Automated-Medical-Image-Analysis-Grad-CAM"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="pub-link"
+                    >
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                      </svg>
+                      Paper
+                    </a>
+                  </div>
+                </div>
+              </article>
+
+              {/* Publication 8: ICECA 2026 */}
+              <article className="pub-card reveal">
+                <div className="pub-media" data-media-type="image">
+                  <img
+                    src="/assets/papers/paper-08-blockchain-banking-iceca.jpg"
+                    alt="AI-Driven Load Balancer in Banking System"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="pub-content">
+                  <div className="pub-tags">
+                    <span className="pub-tag">ICECA 2026</span>
+                  </div>
+                  <h3 className="pub-title">
+                    AI-Driven Load Balancer with Blockchain-Based Decision Making in Banking System
+                  </h3>
+                  <p className="pub-authors">
+                    <strong>Vibhas Reddy Araveeti</strong>, et al.
+                  </p>
+                  <p className="pub-venue">
+                    presented at the 10th ICECA, 2026
+                  </p>
+                  <div className="pub-links">
+                    <a
+                      href="https://github.com/VIBHAS777/research-papers/blob/main/08-AI-Driven-Load-Balancer-Banking/AI_Driven_Load_Balancer_with_Blockchain_Decision_Making_in_Banking.pdf"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="pub-link"
+                    >
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                      </svg>
+                      Paper
+                    </a>
+                  </div>
+                </div>
+              </article>
+
+              {/* Publication 9: ICUIS 2026 */}
+              <article className="pub-card reveal">
+                <div className="pub-media" data-media-type="image">
+                  <img
+                    src="/assets/papers/paper-09-priority-sdn-icuis.jpg"
+                    alt="Stability Threshold and Performance Degradation of Priority-Aware SDN"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="pub-content">
+                  <div className="pub-tags">
+                    <span className="pub-tag">ICUIS 2026</span>
+                  </div>
+                  <h3 className="pub-title">
+                    Stability Threshold and Performance Degradation Analysis of Priority-Aware SDN in Healthcare IoT Systems
+                  </h3>
+                  <p className="pub-authors">
+                    <strong>Vibhas Reddy Araveeti</strong>, et al.
+                  </p>
+                  <p className="pub-venue">
+                    accepted at ICUIS, 2026
+                  </p>
+                  <div className="pub-links">
+                    <a
+                      href="https://github.com/VIBHAS777/research-papers/blob/main/09-Priority-Aware-SDN-Healthcare-IoT/Stability_Threshold_and_Performance_Degradation_Priority_Aware_SDN.pdf"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="pub-link"
+                    >
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                      </svg>
+                      Paper
+                    </a>
+                  </div>
+                </div>
+              </article>
+
+              {/* Publication 10: ICON INDIA 2026 */}
+              <article className="pub-card reveal">
+                <div className="pub-media" data-media-type="image">
+                  <img
+                    src="/assets/papers/paper-10-datacenter-sdn-icon.jpg"
+                    alt="Intelligent Congestion Prediction in Data Center Networks"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="pub-content">
+                  <div className="pub-tags">
+                    <span className="pub-tag">ICON INDIA 2026</span>
+                  </div>
+                  <h3 className="pub-title">
+                    Intelligent Congestion Prediction and Control in Data Center Networks Using SDN and Deep Learning
+                  </h3>
+                  <p className="pub-authors">
+                    <strong>Vibhas Reddy Araveeti</strong>, et al.
+                  </p>
+                  <p className="pub-venue">
+                    accepted at ICON INDIA, 2026
+                  </p>
+                  <div className="pub-links">
+                    <a
+                      href="https://github.com/VIBHAS777/research-papers/blob/main/10-SDN-Deep-Learning-Congestion-Control/Intelligent_Congestion_Prediction_and_Control_in_Data_Center_Networks.pdf"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="pub-link"
+                    >
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                      </svg>
+                      Paper
+                    </a>
+                  </div>
+                </div>
+              </article>
+
+              {/* Publication 11: ICRTAC 2026 */}
+              <article className="pub-card reveal">
+                <div className="pub-media" data-media-type="image">
+                  <img
+                    src="/assets/papers/paper-11-unified-disease-icrtac.jpg"
+                    alt="Unified ML Pipeline for Chronic Disease Early Prediction"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="pub-content">
+                  <div className="pub-tags">
+                    <span className="pub-tag">ICRTAC 2026</span>
+                  </div>
+                  <h3 className="pub-title">
+                    A Unified Machine Learning Pipeline for Early Prediction of Heart Disease, Diabetes Mellitus, and Alzheimer's Disease
+                  </h3>
+                  <p className="pub-authors">
+                    <strong>Vibhas Reddy Araveeti</strong>, et al.
+                  </p>
+                  <p className="pub-venue">
+                    accepted at ICRTAC, 2026
+                  </p>
+                  <div className="pub-links">
+                    <a
+                      href="https://github.com/VIBHAS777/research-papers/blob/main/11-Unified-Chronic-Disease-Pipeline/Unified_ML_Pipeline_Early_Prediction_Heart_Disease_Diabetes_Alzheimers.pdf"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="pub-link"
+                    >
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                      </svg>
+                      Paper
+                    </a>
+                  </div>
+                </div>
+              </article>
+
+              {/* Publication 12: ICACS 2026 */}
+              <article className="pub-card reveal">
+                <div className="pub-media" data-media-type="image">
+                  <img
+                    src="/assets/papers/paper-12-seizure-max30102-icacs.jpg"
+                    alt="Real-Time Multimodal Seizure Detection Using MAX30102"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="pub-content">
+                  <div className="pub-tags">
+                    <span className="pub-tag">ICACS 2026</span>
+                  </div>
+                  <h3 className="pub-title">
+                    A Low-Cost Real-Time Multimodal Seizure Detection System Using MAX30102 and Accelerometry
+                  </h3>
+                  <p className="pub-authors">
+                    <strong>Vibhas Reddy Araveeti</strong>, et al.
+                  </p>
+                  <p className="pub-venue">
+                    under review at ICACS, 2026
+                  </p>
+                  <div className="pub-links">
+                    <a
+                      href="https://github.com/VIBHAS777/research-papers/blob/main/12-Multimodal-Seizure-Detection-MAX30102/Low_Cost_Real_Time_Multimodal_Seizure_Detection_System_MAX30102.pdf"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="pub-link"
+                    >
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                      </svg>
+                      Paper
+                    </a>
+                  </div>
+                </div>
+              </article>
             </div>
           </div>
         </section>
