@@ -3,20 +3,20 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default function Home() {
-  const [theme, setTheme] = useState("dark");
+  const [theme, setTheme] = useState("light");
   const [navOpen, setNavOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("about");
   const [openAbstract, setOpenAbstract] = useState(null);
 
-  // Initialize theme from localStorage or default dark
+  // Initialize theme from localStorage, default to light
   useEffect(() => {
-    const savedTheme = localStorage.getItem("theme-v2") || "dark";
+    const savedTheme = localStorage.getItem("theme-v2") || "light";
     setTheme(savedTheme);
-    if (savedTheme === "light") {
-      document.documentElement.setAttribute("data-theme", "light");
+    if (savedTheme === "dark") {
+      document.documentElement.setAttribute("data-theme", "dark");
     } else {
-      document.documentElement.removeAttribute("data-theme");
+      document.documentElement.setAttribute("data-theme", "light");
     }
   }, []);
 
@@ -24,23 +24,23 @@ export default function Home() {
     const newTheme = theme === "light" ? "dark" : "light";
     setTheme(newTheme);
     localStorage.setItem("theme-v2", newTheme);
-    if (newTheme === "light") {
-      document.documentElement.setAttribute("data-theme", "light");
+    if (newTheme === "dark") {
+      document.documentElement.setAttribute("data-theme", "dark");
     } else {
-      document.documentElement.removeAttribute("data-theme");
+      document.documentElement.setAttribute("data-theme", "light");
     }
   };
 
   // Scroll detection for navbar
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
+      setScrolled(window.scrollY > 40);
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Intersection observer for reveal animations & active nav highlighting
+  // Intersection observer for reveals & active nav
   useEffect(() => {
     const reveals = document.querySelectorAll(".reveal, .reveal-stagger");
     const dots = document.querySelectorAll(".timeline-dot");
@@ -54,13 +54,12 @@ export default function Home() {
           }
         });
       },
-      { threshold: 0.1, rootMargin: "0px 0px -40px 0px" }
+      { threshold: 0.08, rootMargin: "0px 0px -30px 0px" }
     );
 
     reveals.forEach((el) => observer.observe(el));
     dots.forEach((el) => observer.observe(el));
 
-    // Nav active section tracking
     const sections = document.querySelectorAll("section[id]");
     const navObserver = new IntersectionObserver(
       (entries) => {
@@ -114,7 +113,14 @@ export default function Home() {
               className={`navbar-link ${activeSection === "research" ? "active" : ""}`}
               onClick={() => setNavOpen(false)}
             >
-              Research
+              Publications
+            </a>
+            <a
+              href="#projects"
+              className={`navbar-link ${activeSection === "projects" ? "active" : ""}`}
+              onClick={() => setNavOpen(false)}
+            >
+              Projects
             </a>
             <a
               href="#experience"
@@ -131,25 +137,11 @@ export default function Home() {
               Awards
             </a>
             <a
-              href="#projects"
-              className={`navbar-link ${activeSection === "projects" ? "active" : ""}`}
-              onClick={() => setNavOpen(false)}
-            >
-              Projects
-            </a>
-            <a
-              href="#writing"
-              className={`navbar-link ${activeSection === "writing" ? "active" : ""}`}
-              onClick={() => setNavOpen(false)}
-            >
-              Writing
-            </a>
-            <a
               href="#service"
               className={`navbar-link ${activeSection === "service" ? "active" : ""}`}
               onClick={() => setNavOpen(false)}
             >
-              Service
+              Leadership
             </a>
           </div>
 
@@ -161,7 +153,7 @@ export default function Home() {
             aria-label="Toggle dark/light mode"
             title="Toggle theme"
           >
-            {/* Moon Icon */}
+            {/* Moon Icon (shown in light mode to switch to dark) */}
             <svg
               className="icon-moon"
               viewBox="0 0 24 24"
@@ -173,7 +165,7 @@ export default function Home() {
             >
               <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
             </svg>
-            {/* Sun Icon */}
+            {/* Sun Icon (shown in dark mode to switch to light) */}
             <svg
               className="icon-sun"
               viewBox="0 0 24 24"
@@ -234,13 +226,13 @@ export default function Home() {
                 <h1 className="hero-name">Vibhas Reddy</h1>
                 <p className="hero-subtitle">AI/ML &amp; Clinical AI Researcher</p>
 
-                {/* Interest Chips */}
+                {/* Interest Chips - Updated with AI/ML instead of Mathematical Foundations */}
                 <div className="hero-chips">
                   <span className="chip">🏥 Healthcare AI</span>
                   <span className="chip">🔬 Clinical Deep Learning</span>
                   <span className="chip">📊 Medical Imaging</span>
                   <span className="chip">🧠 Multimodal LLMs</span>
-                  <span className="chip">📐 Mathematical Foundations</span>
+                  <span className="chip">🤖 AI/ML</span>
                 </div>
 
                 {/* CTA Buttons */}
@@ -282,51 +274,46 @@ export default function Home() {
               <div className="hero-right reveal reveal-delay-1">
                 <div className="about-content">
                   <p>
-                    Hello! I am <strong>Vibhas Reddy Araveeti</strong>, an undergraduate AI/ML and Clinical AI researcher in the Department of Computer Science &amp; Engineering at <strong>Amrita Vishwa Vidyapeetham</strong> (CGPA: <strong>8.65 / 10</strong>, Class of 2026).
+                    Hello! I am <strong>Vibhas Reddy Araveeti</strong>, an undergraduate AI/ML and Clinical AI researcher in the Department of Computer Science &amp; Engineering at <strong>Amrita Vishwa Vidyapeetham</strong> (CGPA: <strong>8.65 / 10</strong>, Class of 2027).
                   </p>
 
                   <p>
-                    My research focuses on developing <em>calibrated deep learning architectures, medical diagnostic pipelines, and healthcare decision-support systems</em> that bridge rigorous theoretical machine learning with clinical reliability. To date, I have authored <strong>12+ peer-reviewed research publications</strong>, including research in the Q1 journal <a className="link-underline" href="https://espublisher.com/" target="_blank" rel="noopener noreferrer">Engineered Science</a> and the <span style={{ color: "var(--accent)", fontWeight: "600" }}>Best Paper Award</span> at <strong>IEEE ICKECS 2026</strong> for our work on explainable clinical risk prediction.
+                    My research focuses on developing <em>calibrated deep learning architectures, medical diagnostic pipelines, and healthcare decision-support systems</em> that bridge machine learning rigor with clinical reliability and safety. To date, I have authored <strong>12+ peer-reviewed research publications</strong>, including research in the Q1-indexed journal <a className="link-underline" href="https://doi.org/10.30919/es2461" target="_blank" rel="noopener noreferrer">Engineered Science</a> and the <span style={{ color: "var(--accent)", fontWeight: "600" }}>Best Paper Award</span> at <strong>IEEE ICKECS 2026</strong> for our work on health misinformation detection.
                   </p>
 
                   <p>
-                    My research curiosity is grounded in a deep passion for problem solving and continuous improvement. Having overcome early schooling struggles in mathematics through deliberate practice and resilience, I earned a <strong>Gold Medal in the SOF International Mathematics Olympiad (IMO)</strong>, scored <strong>100% marks in Class 10</strong>, and achieved the <strong>95th percentile in JEE Main</strong>.
+                    As a Research Intern at Amrita under the supervision of Dr. B. Venkatesh, I built bagged Multilayer Perceptron (MLP) ensembles with Bayesian bootstrap aggregation and multi-technique probability calibration (Platt scaling, isotonic regression), reducing clinical false negative rates to 3% with a Brier score of 0.0489.
                   </p>
 
                   <p>
-                    Beyond research, I believe strong leadership and disciplined athletics feed intellectual endurance. I serve as the Co-Founder &amp; Technical Lead of <strong>ML Minds</strong> (mentoring 250+ student peers in deep learning), Vice President of the <strong>AMAL Club</strong>, Student Mentor in the <strong>Sankhya Mathematics Club</strong>, and Captain of the Amrita University <strong>Powerlifting Team</strong> (District Gold Medalist &amp; State Silver Medalist), as well as a former State Swimming Champion.
+                    Beyond research, I am a <strong>Gold Medalist in the SOF International Mathematics Olympiad (IMO)</strong>, achieved <strong>100% marks in Class 10</strong>, and scored in the <strong>95th percentile in JEE Main</strong>. I co-founded and lead <strong>ML Minds</strong> (mentoring 250+ student peers), serve as Captain of the Amrita University <strong>Powerlifting Team</strong> (District Gold Medalist &amp; State Silver Medalist), and previously won a State Swimming Championship Gold.
                   </p>
 
                   <p>
-                    I am always excited to discuss healthcare AI, clinical trial modeling, and collaborative machine learning research. Feel free to reach out at{" "}
+                    I welcome research collaborations, discussions on clinical machine learning, and opportunities. Please feel free to reach out at{" "}
                     <a className="link-underline" href="mailto:vibhasf17@gmail.com?subject=Research%20Collaboration">
                       vibhasf17@gmail.com
                     </a>.
                   </p>
 
-                  {/* Recent Updates / News Feed */}
-                  <div style={{ marginTop: "2rem", paddingTop: "1.5rem", borderTop: "1px solid var(--border)" }}>
-                    <h3 style={{ fontSize: "1.1rem", fontFamily: "var(--font-serif)", marginBottom: "1rem", color: "var(--text)" }}>
-                      Recent Updates
-                    </h3>
-                    <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "0.75rem", fontSize: "0.92rem", color: "var(--text-secondary)" }}>
-                      <li style={{ display: "flex", gap: "0.75rem", alignItems: "baseline" }}>
-                        <span style={{ color: "var(--accent)", fontWeight: "700", minWidth: "75px" }}>Jan 2026</span>
-                        <span>🏆 Received the <strong>Best Paper Award</strong> at <strong>IEEE ICKECS 2026</strong> for research on explainable cardiovascular clinical risk stratification.</span>
-                      </li>
-                      <li style={{ display: "flex", gap: "0.75rem", alignItems: "baseline" }}>
-                        <span style={{ color: "var(--accent)", fontWeight: "700", minWidth: "75px" }}>Dec 2025</span>
-                        <span>📄 Research on multimodal clinical diagnostic pipelines accepted for publication in the Q1 journal <strong>Engineered Science</strong>.</span>
-                      </li>
-                      <li style={{ display: "flex", gap: "0.75rem", alignItems: "baseline" }}>
-                        <span style={{ color: "var(--accent)", fontWeight: "700", minWidth: "75px" }}>Sep 2025</span>
-                        <span>🚀 Co-founded <strong>ML Minds</strong> at Amrita; conducted comprehensive hands-on workshops on Transformers and PyTorch for 250+ students.</span>
-                      </li>
-                      <li style={{ display: "flex", gap: "0.75rem", alignItems: "baseline" }}>
-                        <span style={{ color: "var(--accent)", fontWeight: "700", minWidth: "75px" }}>May 2025</span>
-                        <span>🥇 Won <strong>Gold Medal</strong> at District Powerlifting Championship &amp; led Amrita University team to the overall first-place victory.</span>
-                      </li>
-                    </ul>
+                  {/* Highlights Bar */}
+                  <div style={{ marginTop: "1.75rem", paddingTop: "1.25rem", borderTop: "1px solid var(--border)", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(130px, 1fr))", gap: "1rem", textAlign: "center" }}>
+                    <div style={{ padding: "0.75rem", background: "var(--card)", borderRadius: "var(--radius-sm)", border: "1px solid var(--border)" }}>
+                      <div style={{ fontSize: "1.5rem", fontWeight: "800", color: "var(--accent)" }}>12+</div>
+                      <div style={{ fontSize: "0.82rem", color: "var(--text-secondary)" }}>Publications</div>
+                    </div>
+                    <div style={{ padding: "0.75rem", background: "var(--card)", borderRadius: "var(--radius-sm)", border: "1px solid var(--border)" }}>
+                      <div style={{ fontSize: "1.5rem", fontWeight: "800", color: "var(--accent)" }}>Q1</div>
+                      <div style={{ fontSize: "0.82rem", color: "var(--text-secondary)" }}>Engineered Science</div>
+                    </div>
+                    <div style={{ padding: "0.75rem", background: "var(--card)", borderRadius: "var(--radius-sm)", border: "1px solid var(--border)" }}>
+                      <div style={{ fontSize: "1.5rem", fontWeight: "800", color: "var(--accent)" }}>🏆 Best Paper</div>
+                      <div style={{ fontSize: "0.82rem", color: "var(--text-secondary)" }}>IEEE ICKECS 2026</div>
+                    </div>
+                    <div style={{ padding: "0.75rem", background: "var(--card)", borderRadius: "var(--radius-sm)", border: "1px solid var(--border)" }}>
+                      <div style={{ fontSize: "1.5rem", fontWeight: "800", color: "var(--accent)" }}>8.65 / 10</div>
+                      <div style={{ fontSize: "0.82rem", color: "var(--text-secondary)" }}>B.Tech CSE GPA</div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -335,122 +322,41 @@ export default function Home() {
         </section>
 
         {/* ==============================================================
-            SELECTED PUBLICATIONS SECTION
+            ACADEMIC PROJECTS SECTION (EXACT PROJECTS & PICS FROM RESUME)
             ============================================================== */}
-        <section className="section" id="research">
+        <section className="section" id="projects">
           <div className="container">
-            <h2 className="section-title reveal">Selected Publications</h2>
+            <h2 className="section-title reveal">Academic Projects</h2>
             <p className="reveal" style={{ color: "var(--text-secondary)", marginBottom: "2rem", maxWidth: "750px" }}>
-              Representative peer-reviewed papers spanning clinical risk stratification, multimodal medical imaging diagnostics, and physiological signal modeling. (12+ total publications)
+              Core machine learning, medical image analysis, and systems engineering projects developed and verified according to my resume.
             </p>
 
             <div className="pub-grid">
-              {/* Paper 1: Best Paper Award IEEE */}
-              <article className="pub-card featured reveal">
-                <div className="pub-media" data-media-type="image">
-                  <img
-                    src="/assets/projects/heart-disease-ai.png"
-                    alt="CardioRisk-AI Stacking Ensemble ROC and SHAP Visualizations"
-                    loading="lazy"
-                  />
-                </div>
-                <div className="pub-content">
-                  <div className="pub-tags">
-                    <span className="pub-tag" style={{ background: "rgba(94, 181, 214, 0.15)", color: "var(--accent)", borderColor: "var(--accent)" }}>
-                      🏆 Best Paper Award
-                    </span>
-                    <span className="pub-tag">Conference (IEEE)</span>
-                    <span className="pub-tag">Clinical AI</span>
-                  </div>
-                  <h3 className="pub-title">
-                    Explainable Deep Stacking Ensembles for Early Cardiovascular Risk Stratification
-                  </h3>
-                  <p className="pub-authors">
-                    <strong>Vibhas Reddy Araveeti</strong>, Healthcare AI Lab Collaborators, Amrita Faculty Advisors
-                  </p>
-                  <p className="pub-venue">
-                    IEEE International Conference on Knowledge Engineering and Cyber Systems (ICKECS), 2026
-                  </p>
-                  <div className="pub-links">
-                    <a
-                      className="pub-link"
-                      href="/document/Vibhas-Reddy-Resume.pdf"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                        <polyline points="14 2 14 8 20 8" />
-                      </svg>
-                      Paper (PDF)
-                    </a>
-                    <a
-                      className="pub-link"
-                      href="https://github.com/VIBHAS777/portfolio"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                        <polyline points="16 18 22 12 16 6" />
-                        <polyline points="8 6 2 12 8 18" />
-                      </svg>
-                      Code
-                    </a>
-                    <button
-                      className="pub-link"
-                      onClick={() => toggleAbstract("pub1")}
-                      style={{ background: "none", cursor: "pointer", border: "1px solid var(--border)" }}
-                    >
-                      Abstract {openAbstract === "pub1" ? "▲" : "▼"}
-                    </button>
-                  </div>
-                  {openAbstract === "pub1" && (
-                    <div style={{ marginTop: "1rem", padding: "1rem", background: "var(--bg2)", borderRadius: "var(--radius-sm)", fontSize: "0.88rem", color: "var(--text-secondary)", lineHeight: "1.6" }}>
-                      <strong>Abstract:</strong> Cardiovascular diseases remain the leading cause of global morbidity. We introduce an explainable stacking ensemble architecture that synchronizes gradient-boosted decision trees with deep neural networks. By integrating post-hoc SHAP attribution and calibrated prediction confidence, our framework achieves a 94.2% ROC-AUC on clinical cohorts, revealing key contributing risk factors (ST-depression, resting blood pressure, serum cholesterol) to empower clinician trust in high-stakes interventions.
-                    </div>
-                  )}
-                </div>
-              </article>
-
-              {/* Paper 2: Q1 Journal Engineered Science */}
+              {/* Resume Project 1: Brain Tumor & Skin Disease Diagnosis */}
               <article className="pub-card reveal">
                 <div className="pub-media" data-media-type="image">
                   <img
-                    src="/assets/projects/medical-imaging-ai.png"
-                    alt="DenseNet and ViT Grad-CAM Medical Imaging Localization"
+                    src="/assets/projects/medical-imaging-mri-skin.png"
+                    alt="Brain Tumor and Skin Disease Diagnosis with Grad-CAM Visualizations"
                     loading="lazy"
                   />
                 </div>
                 <div className="pub-content">
                   <div className="pub-tags">
-                    <span className="pub-tag" style={{ color: "#34d399", borderColor: "#34d399" }}>
-                      Q1 Journal
-                    </span>
-                    <span className="pub-tag">Medical Imaging</span>
+                    <span className="pub-tag">Transfer Learning</span>
+                    <span className="pub-tag">VGG16 / ResNet-50 / EfficientNet</span>
                     <span className="pub-tag">Grad-CAM</span>
                   </div>
                   <h3 className="pub-title">
-                    Calibrated Multimodal Vision Transformers for High-Sensitivity Chest Radiograph Pathology Localization
+                    Automated Medical Image Analysis for Brain Tumor and Skin Disease Diagnosis
                   </h3>
                   <p className="pub-authors">
-                    <strong>Vibhas Reddy Araveeti</strong>, Diagnostic Medical Imaging Research Team
+                    Aug 2024 – Dec 2024 • <strong>94% Brain Tumor Accuracy</strong> • <strong>99% Skin Disease Accuracy</strong> • <strong>0.993 AUC</strong>
                   </p>
-                  <p className="pub-venue">
-                    Engineered Science (Q1 Journal, Impact Factor: 5.6+), 2025
+                  <p style={{ fontSize: "0.9rem", color: "var(--text-secondary)", margin: "0.5rem 0 0.85rem", lineHeight: "1.6" }}>
+                    Developed a unified deep learning pipeline for brain tumor and skin disease diagnosis, applying transfer learning with VGG16, ResNet-50, and EfficientNet architectures to address cross-domain variability. Evaluated across MRI and dermoscopic datasets, using Grad-CAM class activation mapping to visually localize critical pathology regions driving model decisions.
                   </p>
                   <div className="pub-links">
-                    <a
-                      className="pub-link"
-                      href="/document/Vibhas-Reddy-Resume.pdf"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                        <polyline points="14 2 14 8 20 8" />
-                      </svg>
-                      Paper (PDF)
-                    </a>
                     <a
                       className="pub-link"
                       href="https://github.com/VIBHAS777/portfolio"
@@ -461,47 +367,37 @@ export default function Home() {
                         <polyline points="16 18 22 12 16 6" />
                         <polyline points="8 6 2 12 8 18" />
                       </svg>
-                      Code
+                      Code / Model Details
                     </a>
-                    <button
-                      className="pub-link"
-                      onClick={() => toggleAbstract("pub2")}
-                      style={{ background: "none", cursor: "pointer", border: "1px solid var(--border)" }}
-                    >
-                      Abstract {openAbstract === "pub2" ? "▲" : "▼"}
-                    </button>
                   </div>
-                  {openAbstract === "pub2" && (
-                    <div style={{ marginTop: "1rem", padding: "1rem", background: "var(--bg2)", borderRadius: "var(--radius-sm)", fontSize: "0.88rem", color: "var(--text-secondary)", lineHeight: "1.6" }}>
-                      <strong>Abstract:</strong> Automated chest radiograph interpretation requires both high sensitivity and spatial explainability. We present a hybrid architecture uniting DenseNet-121 convolutional backbones with self-attention Vision Transformers (ViT) and Grad-CAM class activation mapping. Evaluated on large-scale radiograph benchmarks, our method detects thoracic pathologies with 98.2% diagnostic sensitivity while providing anatomical localization to assist radiologists during triage.
-                    </div>
-                  )}
                 </div>
               </article>
 
-              {/* Paper 3: Seizure Detection */}
-              <article className="pub-card reveal">
+              {/* Resume Project 2: Health Misinformation (Best Paper Award) */}
+              <article className="pub-card featured reveal">
                 <div className="pub-media" data-media-type="image">
                   <img
-                    src="/assets/projects/seizure-detection-iot.png"
-                    alt="Real-time Wearable EEG Seizure Detection Waveforms"
+                    src="/assets/projects/health-misinformation-llama.png"
+                    alt="Health Misinformation Detection with BioBERT and Llama-3"
                     loading="lazy"
                   />
                 </div>
                 <div className="pub-content">
                   <div className="pub-tags">
-                    <span className="pub-tag">Journal</span>
-                    <span className="pub-tag">Physiological IoT</span>
-                    <span className="pub-tag">EEG Signals</span>
+                    <span className="pub-tag" style={{ background: "rgba(2, 132, 199, 0.12)", color: "var(--accent)", borderColor: "var(--accent)" }}>
+                      🏆 IEEE Best Paper Award
+                    </span>
+                    <span className="pub-tag">Meta-Llama-3-8B</span>
+                    <span className="pub-tag">BioBERT / ClinicalBERT</span>
                   </div>
                   <h3 className="pub-title">
-                    Continuous Temporal Seizure Onset Detection via Attention-Augmented Bi-LSTM on Wearable EEG
+                    Detecting Health Misinformation: AI Solutions for Medical and Policy Content
                   </h3>
                   <p className="pub-authors">
-                    <strong>Vibhas Reddy Araveeti</strong>, Physiological Signal Computing Group
+                    Dec 2025 – Feb 2026 • <strong>83.91% Accuracy</strong> • <strong>0.7831 Macro-F1</strong> • <strong>BioBERT Refute F1: 0.7264</strong>
                   </p>
-                  <p className="pub-venue">
-                    Biomedical Signal Processing and Control, 2025
+                  <p style={{ fontSize: "0.9rem", color: "var(--text-secondary)", margin: "0.5rem 0 0.85rem", lineHeight: "1.6" }}>
+                    Compared biomedical transformer models (BioBERT, RoBERTa, SciBERT, and ClinicalBERT) against Meta-Llama-3-8B-Instruct for 3-class claim verification (Support, Refute, Neutral). Zero-shot Meta-Llama-3-8B-Instruct reached 83.91% accuracy and 0.7831 Macro-F1, while data augmentation boosted BioBERT Refute-class F1 to 0.7264. Awarded Best Paper at IEEE ICKECS 2026.
                   </p>
                   <div className="pub-links">
                     <a
@@ -514,7 +410,7 @@ export default function Home() {
                         <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
                         <polyline points="14 2 14 8 20 8" />
                       </svg>
-                      Paper (PDF)
+                      Paper
                     </a>
                     <a
                       className="pub-link"
@@ -522,65 +418,37 @@ export default function Home() {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                        <polyline points="16 18 22 12 16 6" />
-                        <polyline points="8 6 2 12 8 18" />
-                      </svg>
                       Code
                     </a>
-                    <button
-                      className="pub-link"
-                      onClick={() => toggleAbstract("pub3")}
-                      style={{ background: "none", cursor: "pointer", border: "1px solid var(--border)" }}
-                    >
-                      Abstract {openAbstract === "pub3" ? "▲" : "▼"}
-                    </button>
                   </div>
-                  {openAbstract === "pub3" && (
-                    <div style={{ marginTop: "1rem", padding: "1rem", background: "var(--bg2)", borderRadius: "var(--radius-sm)", fontSize: "0.88rem", color: "var(--text-secondary)", lineHeight: "1.6" }}>
-                      <strong>Abstract:</strong> Timely detection of epileptic seizure onset is critical for patient intervention and preventing injury. We engineer a lightweight Attention Bi-LSTM pipeline optimized for wearable EEG telemetry. By decomposing continuous multi-channel signals and tracking temporal dynamics, the system achieves sub-0.35s inference latency and a 96.4% detection rate with negligible false alarms on continuous pediatric EEG recordings.
-                    </div>
-                  )}
                 </div>
               </article>
 
-              {/* Paper 4: Health Misinformation GNN */}
+              {/* Resume Project 3: Real-Time Multimodal Seizure Detection System */}
               <article className="pub-card reveal">
                 <div className="pub-media" data-media-type="image">
                   <img
-                    src="/assets/projects/health-misinformation-gnn.png"
-                    alt="Graph Neural Network for Health Misinformation Detection"
+                    src="/assets/projects/hardware-seizure-max30102.png"
+                    alt="Low-Cost Multimodal Seizure Detection with MAX30102 and Accelerometry"
                     loading="lazy"
                   />
                 </div>
                 <div className="pub-content">
                   <div className="pub-tags">
-                    <span className="pub-tag">IEEE</span>
-                    <span className="pub-tag">Graph Neural Networks</span>
-                    <span className="pub-tag">Biomedical NLP</span>
+                    <span className="pub-tag">Hardware / IoT</span>
+                    <span className="pub-tag">MAX30102 &amp; MPU6050</span>
+                    <span className="pub-tag">Arduino Uno</span>
                   </div>
                   <h3 className="pub-title">
-                    Graph-Augmented Language Models for Detecting Epidemiological Misinformation in Social Networks
+                    A Low-Cost Real-Time Multimodal Seizure Detection System
                   </h3>
                   <p className="pub-authors">
-                    <strong>Vibhas Reddy Araveeti</strong>, Computational Social Systems Research Group
+                    Feb 2026 – May 2026 • <strong>Dual-Threshold Signal Fusion</strong> • <strong>Continuous Non-Clinical Monitoring</strong>
                   </p>
-                  <p className="pub-venue">
-                    IEEE Transactions on Computational Social Systems, 2025
+                  <p style={{ fontSize: "0.9rem", color: "var(--text-secondary)", margin: "0.5rem 0 0.85rem", lineHeight: "1.6" }}>
+                    Engineered an accessible wearable prototype integrating MAX30102 photoplethysmography (heart-rate/pulse) and MPU6050 accelerometry with an Arduino Uno. Developed a dual physiological threshold sensor fusion algorithm that cuts false alarms caused by isolated heart-rate spikes or regular body movement, triggering concurrent real-time audiovisual alerts with event timestamping.
                   </p>
                   <div className="pub-links">
-                    <a
-                      className="pub-link"
-                      href="/document/Vibhas-Reddy-Resume.pdf"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                        <polyline points="14 2 14 8 20 8" />
-                      </svg>
-                      Paper (PDF)
-                    </a>
                     <a
                       className="pub-link"
                       href="https://github.com/VIBHAS777/portfolio"
@@ -591,21 +459,132 @@ export default function Home() {
                         <polyline points="16 18 22 12 16 6" />
                         <polyline points="8 6 2 12 8 18" />
                       </svg>
-                      Code
+                      Schematics &amp; Code
                     </a>
-                    <button
-                      className="pub-link"
-                      onClick={() => toggleAbstract("pub4")}
-                      style={{ background: "none", cursor: "pointer", border: "1px solid var(--border)" }}
-                    >
-                      Abstract {openAbstract === "pub4" ? "▲" : "▼"}
-                    </button>
                   </div>
-                  {openAbstract === "pub4" && (
-                    <div style={{ marginTop: "1rem", padding: "1rem", background: "var(--bg2)", borderRadius: "var(--radius-sm)", fontSize: "0.88rem", color: "var(--text-secondary)", lineHeight: "1.6" }}>
-                      <strong>Abstract:</strong> Health misinformation during public health crises spreads rapidly through complex social network topologies. We propose a hybrid framework combining BioBERT contextual linguistic embeddings with Graph Convolutional Networks (GCN) over user propagation trees. The model jointly analyzes semantic claims and structural dissemination dynamics, reaching a 94.8% Macro F1 score on health hoax detection benchmarks.
-                    </div>
-                  )}
+                </div>
+              </article>
+
+              {/* Resume Project 4: RNN-Based Deadlock Detection */}
+              <article className="pub-card reveal">
+                <div className="pub-media" data-media-type="image">
+                  <img
+                    src="/assets/projects/rnn-cpu-deadlock.png"
+                    alt="RNN-Based Deadlock Detection for CPU Performance Optimization"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="pub-content">
+                  <div className="pub-tags">
+                    <span className="pub-tag">Operating Systems</span>
+                    <span className="pub-tag">PyTorch 2-Layer RNN</span>
+                    <span className="pub-tag">Benchmarking</span>
+                  </div>
+                  <h3 className="pub-title">
+                    RNN-Based Deadlock Detection for CPU Performance Optimization
+                  </h3>
+                  <p className="pub-authors">
+                    Feb 2025 – May 2025 • <strong>90.25% Test Accuracy</strong> • <strong>CPU Score: 70 → 98.02 (+28.02% Boost)</strong>
+                  </p>
+                  <p style={{ fontSize: "0.9rem", color: "var(--text-secondary)", margin: "0.5rem 0 0.85rem", lineHeight: "1.6" }}>
+                    Architected a Python/PyTorch system that translated simulated OS process and resource logs into sequential one-hot encoded vectors, capturing temporal dependency patterns. A 2-layer recurrent neural network predicts impending circular-wait deadlocks with 90.25% accuracy, allowing preemptive resolution that raised simulated CPU benchmark performance from 70 to 98.02.
+                  </p>
+                  <div className="pub-links">
+                    <a
+                      className="pub-link"
+                      href="https://github.com/VIBHAS777/portfolio"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <polyline points="16 18 22 12 16 6" />
+                        <polyline points="8 6 2 12 8 18" />
+                      </svg>
+                      Repository
+                    </a>
+                  </div>
+                </div>
+              </article>
+
+              {/* Resume Project 5: Priority-Aware SDN */}
+              <article className="pub-card reveal">
+                <div className="pub-media" data-media-type="image">
+                  <img
+                    src="/assets/projects/priority-sdn-healthcare.png"
+                    alt="Priority-Aware SDN Performance Degradation Analysis"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="pub-content">
+                  <div className="pub-tags">
+                    <span className="pub-tag">Healthcare IoT Networks</span>
+                    <span className="pub-tag">Dijkstra + Tabular Q-Learning</span>
+                    <span className="pub-tag">SDN</span>
+                  </div>
+                  <h3 className="pub-title">
+                    Stability Threshold and Performance Degradation Analysis of Priority-Aware SDN
+                  </h3>
+                  <p className="pub-authors">
+                    Jan 2026 – Jun 2026 • <strong>P95 Latency: -40%</strong> • <strong>Jitter: -84%</strong> • <strong>100% On-Time Delivery</strong>
+                  </p>
+                  <p style={{ fontSize: "0.9rem", color: "var(--text-secondary)", margin: "0.5rem 0 0.85rem", lineHeight: "1.6" }}>
+                    Engineered a priority-aware SDN framework combining Dijkstra dynamic routing with tabular Q-learning to dynamically adapt queue weights across four healthcare IoT traffic tiers under fluctuating network congestion. Lowered P95 latency by 40% and jitter by 84% at peak saturation while ensuring 100% on-time packet arrival for mission-critical telemetry.
+                  </p>
+                  <div className="pub-links">
+                    <a
+                      className="pub-link"
+                      href="https://github.com/VIBHAS777/portfolio"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <polyline points="16 18 22 12 16 6" />
+                        <polyline points="8 6 2 12 8 18" />
+                      </svg>
+                      Architecture &amp; Code
+                    </a>
+                  </div>
+                </div>
+              </article>
+
+              {/* Resume Project 6: Unified Disease Prediction Pipeline */}
+              <article className="pub-card reveal">
+                <div className="pub-media" data-media-type="image">
+                  <img
+                    src="/assets/projects/unified-disease-pipeline.png"
+                    alt="Unified Disease Prediction Pipeline for Heart Disease, Diabetes, and Alzheimer's"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="pub-content">
+                  <div className="pub-tags">
+                    <span className="pub-tag">Multi-Condition ML</span>
+                    <span className="pub-tag">SMOTE Balancing</span>
+                    <span className="pub-tag">Clinical Screening</span>
+                  </div>
+                  <h3 className="pub-title">
+                    Unified Disease Prediction Pipeline (Heart Disease, Diabetes, Alzheimer's)
+                  </h3>
+                  <p className="pub-authors">
+                    Aug 2025 – Nov 2025 • <strong>89.3% Overall Accuracy</strong> • <strong>0.887 F1-Score</strong> • <strong>Multi-Dataset Evaluation</strong>
+                  </p>
+                  <p style={{ fontSize: "0.9rem", color: "var(--text-secondary)", margin: "0.5rem 0 0.85rem", lineHeight: "1.6" }}>
+                    Built an end-to-end clinical machine learning pipeline for early multi-condition disease screening across heart disease, diabetes mellitus, and Alzheimer's disease. Implemented standardized preprocessing, feature engineering, and SMOTE class-imbalance correction, rigorously comparing predictive performance across three distinct clinical cohorts.
+                  </p>
+                  <div className="pub-links">
+                    <a
+                      className="pub-link"
+                      href="https://github.com/VIBHAS777/portfolio"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <polyline points="16 18 22 12 16 6" />
+                        <polyline points="8 6 2 12 8 18" />
+                      </svg>
+                      GitHub Repo
+                    </a>
+                  </div>
                 </div>
               </article>
             </div>
@@ -613,84 +592,337 @@ export default function Home() {
         </section>
 
         {/* ==============================================================
-            EDUCATION & EXPERIENCE SECTION
+            PEER-REVIEWED PUBLICATIONS SECTION (FULL 12 FROM RESUME)
+            ============================================================== */}
+        <section className="section" id="research">
+          <div className="container">
+            <h2 className="section-title reveal">Publications &amp; Papers</h2>
+            <p className="reveal" style={{ color: "var(--text-secondary)", marginBottom: "2rem", maxWidth: "750px" }}>
+              Peer-reviewed papers published in Q1-indexed journals and international IEEE conferences (12 publications).
+            </p>
+
+            <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+              {/* Publication 1: Q1 Engineered Science */}
+              <div className="pub-card featured reveal" style={{ padding: "1.25rem" }}>
+                <div>
+                  <div className="pub-tags">
+                    <span className="pub-tag" style={{ color: "#059669", borderColor: "#059669", fontWeight: "700" }}>
+                      Q1 Journal
+                    </span>
+                    <span className="pub-tag">Engineered Science</span>
+                    <span className="pub-tag">DOI: 10.30919/es2461</span>
+                  </div>
+                  <h3 className="pub-title" style={{ fontSize: "1.1rem" }}>
+                    [1] Heart Disease Risk Prediction Using Deep Learning and Probabilistic Calibration Techniques
+                  </h3>
+                  <p className="pub-authors">
+                    <strong>Vibhas Reddy Araveeti</strong>, Dr. B. Venkatesh, et al.
+                  </p>
+                  <p className="pub-venue">
+                    <em>Engineered Science</em> (Q1 Journal, 2025)
+                  </p>
+                  <p style={{ fontSize: "0.88rem", color: "var(--text-secondary)", marginTop: "0.4rem" }}>
+                    Bagged MLP ensemble framework integrating Bayesian bootstrap aggregation with Platt scaling, isotonic regression, and histogram binning. Achieved 96.42% accuracy, 0.0489 Brier score, 0.97 recall, and 3% false negative rate.
+                  </p>
+                </div>
+              </div>
+
+              {/* Publication 2: ICKECS 2026 Best Paper */}
+              <div className="pub-card featured reveal" style={{ padding: "1.25rem" }}>
+                <div>
+                  <div className="pub-tags">
+                    <span className="pub-tag" style={{ background: "rgba(2, 132, 199, 0.12)", color: "var(--accent)", borderColor: "var(--accent)", fontWeight: "700" }}>
+                      🏆 Best Paper Award
+                    </span>
+                    <span className="pub-tag">IEEE ICKECS 2026</span>
+                  </div>
+                  <h3 className="pub-title" style={{ fontSize: "1.1rem" }}>
+                    [2] Detecting Health Misinformation: AI Solutions for Medical and Policy Content
+                  </h3>
+                  <p className="pub-authors">
+                    <strong>Vibhas Reddy Araveeti</strong>, et al.
+                  </p>
+                  <p className="pub-venue">
+                    Proc. IEEE International Conference on Knowledge Engineering and Communication Systems (ICKECS), 2026
+                  </p>
+                  <p style={{ fontSize: "0.88rem", color: "var(--text-secondary)", marginTop: "0.4rem" }}>
+                    Comparative study of biomedical transformers and Meta-Llama-3-8B-Instruct for 3-class claim verification (Support, Refute, Neutral), achieving 83.91% accuracy and 0.7831 Macro-F1.
+                  </p>
+                </div>
+              </div>
+
+              {/* Publication 3: Brain Tumor & Skin Image Analysis */}
+              <div className="pub-card reveal" style={{ padding: "1.25rem" }}>
+                <div>
+                  <div className="pub-tags">
+                    <span className="pub-tag">ICITEICS 2026</span>
+                    <span className="pub-tag">Grad-CAM &amp; Transfer Learning</span>
+                  </div>
+                  <h3 className="pub-title" style={{ fontSize: "1.05rem" }}>
+                    [3] Automated Medical Image Analysis for Brain Tumor and Skin Disease Diagnosis Using Transfer Learning and Grad-CAM
+                  </h3>
+                  <p className="pub-authors">
+                    <strong>Vibhas Reddy Araveeti</strong>, et al.
+                  </p>
+                  <p className="pub-venue">
+                    Presented at the 3rd International Conference on Innovative Trends in Electronics, Information and Communication Systems (ICITEICS), 2026
+                  </p>
+                </div>
+              </div>
+
+              {/* Publication 4: Seizure Detection System */}
+              <div className="pub-card reveal" style={{ padding: "1.25rem" }}>
+                <div>
+                  <div className="pub-tags">
+                    <span className="pub-tag">ICACS 2026</span>
+                    <span className="pub-tag">IoT Hardware</span>
+                  </div>
+                  <h3 className="pub-title" style={{ fontSize: "1.05rem" }}>
+                    [4] A Low-Cost Real-Time Multimodal Seizure Detection System Using MAX30102 and Accelerometry
+                  </h3>
+                  <p className="pub-authors">
+                    <strong>Vibhas Reddy Araveeti</strong>, et al.
+                  </p>
+                  <p className="pub-venue">
+                    Under review at the International Conference on Advanced Computing and Systems (ICACS), 2026
+                  </p>
+                </div>
+              </div>
+
+              {/* Publication 5: Deadlock Detection ICCCNT */}
+              <div className="pub-card reveal" style={{ padding: "1.25rem" }}>
+                <div>
+                  <div className="pub-tags">
+                    <span className="pub-tag">ICCCNT 2025</span>
+                    <span className="pub-tag">RNN &amp; CPU Optimization</span>
+                  </div>
+                  <h3 className="pub-title" style={{ fontSize: "1.05rem" }}>
+                    [5] Enhancing CPU Benchmark Scores Using RNN-Based Deadlock Detection from System Logs
+                  </h3>
+                  <p className="pub-authors">
+                    <strong>Vibhas Reddy Araveeti</strong>, et al.
+                  </p>
+                  <p className="pub-venue">
+                    Presented at the 16th International Conference on Computing, Communication and Networking Technologies (ICCCNT), 2025
+                  </p>
+                </div>
+              </div>
+
+              {/* Publication 6: Priority-Aware SDN */}
+              <div className="pub-card reveal" style={{ padding: "1.25rem" }}>
+                <div>
+                  <div className="pub-tags">
+                    <span className="pub-tag">ICUIS 2026</span>
+                    <span className="pub-tag">Healthcare SDN</span>
+                  </div>
+                  <h3 className="pub-title" style={{ fontSize: "1.05rem" }}>
+                    [6] Stability Threshold and Performance Degradation Analysis of Priority-Aware SDN in Healthcare IoT Systems
+                  </h3>
+                  <p className="pub-authors">
+                    <strong>Vibhas Reddy Araveeti</strong>, et al.
+                  </p>
+                  <p className="pub-venue">
+                    Accepted at the International Conference on Ubiquitous and Intelligent Systems (ICUIS), 2026
+                  </p>
+                </div>
+              </div>
+
+              {/* Publication 7: Unified ML Disease Pipeline */}
+              <div className="pub-card reveal" style={{ padding: "1.25rem" }}>
+                <div>
+                  <div className="pub-tags">
+                    <span className="pub-tag">ICRTAC 2026</span>
+                    <span className="pub-tag">Clinical Screening</span>
+                  </div>
+                  <h3 className="pub-title" style={{ fontSize: "1.05rem" }}>
+                    [7] A Unified Machine Learning Pipeline for Early Prediction of Heart Disease, Diabetes Mellitus, and Alzheimer's Disease
+                  </h3>
+                  <p className="pub-authors">
+                    <strong>Vibhas Reddy Araveeti</strong>, et al.
+                  </p>
+                  <p className="pub-venue">
+                    Under review at the International Conference on Research in Trends in Advanced Computing (ICRTAC), 2026
+                  </p>
+                </div>
+              </div>
+
+              {/* Publication 8: Waste Detection IEEE */}
+              <div className="pub-card reveal" style={{ padding: "1.25rem" }}>
+                <div>
+                  <div className="pub-tags">
+                    <span className="pub-tag">IEEE ICSSAS 2026</span>
+                    <span className="pub-tag">Object Detection</span>
+                  </div>
+                  <h3 className="pub-title" style={{ fontSize: "1.05rem" }}>
+                    [8] AI-Powered Waste Detection and Sorting Using Object Detection
+                  </h3>
+                  <p className="pub-authors">
+                    <strong>Vibhas Reddy Araveeti</strong>, et al.
+                  </p>
+                  <p className="pub-venue">
+                    Proc. IEEE International Conference on Self-Sustainable Artificial Intelligence Systems (ICSSAS), 2026
+                  </p>
+                </div>
+              </div>
+
+              {/* Publication 9: Malayalam Handwritten OCR */}
+              <div className="pub-card reveal" style={{ padding: "1.25rem" }}>
+                <div>
+                  <div className="pub-tags">
+                    <span className="pub-tag">IEEE I3CTCON 2026</span>
+                    <span className="pub-tag">ConvNeXt-PCA-RF</span>
+                  </div>
+                  <h3 className="pub-title" style={{ fontSize: "1.05rem" }}>
+                    [9] Efficient Malayalam Handwritten Character Recognition Using ConvNeXt-PCA-RandomForest Architecture
+                  </h3>
+                  <p className="pub-authors">
+                    <strong>Vibhas Reddy Araveeti</strong>, et al.
+                  </p>
+                  <p className="pub-venue">
+                    Proc. IEEE International Conference on Convergence in Computing Technology (I3CTCON), 2026
+                  </p>
+                </div>
+              </div>
+
+              {/* Publication 10: Congestion Prediction in Data Centers */}
+              <div className="pub-card reveal" style={{ padding: "1.25rem" }}>
+                <div>
+                  <div className="pub-tags">
+                    <span className="pub-tag">ICON INDIA 2026</span>
+                    <span className="pub-tag">Data Center SDN</span>
+                  </div>
+                  <h3 className="pub-title" style={{ fontSize: "1.05rem" }}>
+                    [10] Intelligent Congestion Prediction and Control in Data Center Networks Using SDN and Deep Learning
+                  </h3>
+                  <p className="pub-authors">
+                    <strong>Vibhas Reddy Araveeti</strong>, et al.
+                  </p>
+                  <p className="pub-venue">
+                    Accepted at IEEE ICON INDIA, 2026
+                  </p>
+                </div>
+              </div>
+
+              {/* Publication 11: Blockchain Banking Load Balancer */}
+              <div className="pub-card reveal" style={{ padding: "1.25rem" }}>
+                <div>
+                  <div className="pub-tags">
+                    <span className="pub-tag">ICECA 2026</span>
+                    <span className="pub-tag">Blockchain &amp; AI</span>
+                  </div>
+                  <h3 className="pub-title" style={{ fontSize: "1.05rem" }}>
+                    [11] AI-Driven Load Balancer with Blockchain-Based Decision Making in Banking System
+                  </h3>
+                  <p className="pub-authors">
+                    <strong>Vibhas Reddy Araveeti</strong>, et al.
+                  </p>
+                  <p className="pub-venue">
+                    Presented at the 10th International Conference on Electronics, Communication and Aerospace Technology (ICECA), 2026
+                  </p>
+                </div>
+              </div>
+
+              {/* Publication 12: Space Shuttle External Tank */}
+              <div className="pub-card reveal" style={{ padding: "1.25rem" }}>
+                <div>
+                  <div className="pub-tags">
+                    <span className="pub-tag">ICAANA 2025</span>
+                    <span className="pub-tag">SLSQP Optimization</span>
+                  </div>
+                  <h3 className="pub-title" style={{ fontSize: "1.05rem" }}>
+                    [12] Optimization of Space Shuttle External Tank Design Return on Investment (ROI)
+                  </h3>
+                  <p className="pub-authors">
+                    <strong>Vibhas Reddy Araveeti</strong>, et al.
+                  </p>
+                  <p className="pub-venue">
+                    Presented at the International Conference on Applied Analysis and Numerical Analytics (ICAANA), 2025
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ==============================================================
+            WORK EXPERIENCE & EDUCATION SECTION (FROM RESUME)
             ============================================================== */}
         <section className="section" id="experience">
           <div className="container">
             <h2 className="section-title reveal">Education &amp; Experience</h2>
 
             <div className="timeline">
-              {/* Item 1: B.Tech */}
+              {/* Education: Amrita University */}
               <div className="timeline-item reveal">
                 <div className="timeline-dot">
                   <span className="timeline-dot-inner" />
                 </div>
                 <div className="timeline-card">
-                  <span className="timeline-date">Aug 2022 – Present</span>
-                  <h3 className="timeline-title">B.Tech in Computer Science &amp; Engineering</h3>
-                  <p className="timeline-org">Amrita Vishwa Vidyapeetham, Amritapuri</p>
+                  <span className="timeline-date">2023 – 2027</span>
+                  <h3 className="timeline-title">Bachelor of Technology, Computer Science and Engineering</h3>
+                  <p className="timeline-org">Amrita Vishwa Vidyapeetham, Bengaluru, India</p>
                   <p className="timeline-desc">
-                    Maintaining an outstanding academic standing with a <strong>CGPA of 8.65 / 10</strong>. Coursework includes Advanced Deep Learning, Data Structures &amp; Algorithms, Distributed Operating Systems, Linear Algebra, Probability &amp; Statistics, and Computer Vision. Selected for undergraduate research honors.
+                    <strong>Cumulative GPA: 8.65 / 10</strong>. Relevant Coursework: Data Structures and Algorithms, Object-Oriented Programming, Software Engineering, Operating Systems, Computer Organization, Database Management Systems, Computer Networks, Machine Learning, Deep Learning, Natural Language Processing, Distributed Systems, Probability, Linear Algebra, and Discrete Mathematics.
                   </p>
                 </div>
               </div>
 
-              {/* Item 2: Healthcare AI Research Intern */}
+              {/* Work Experience: Amrita Research Intern */}
               <div className="timeline-item reveal">
                 <div className="timeline-dot">
                   <span className="timeline-dot-inner" />
                 </div>
                 <div className="timeline-card">
-                  <span className="timeline-date">May 2023 – Present</span>
-                  <h3 className="timeline-title">Undergraduate Research Intern — Healthcare AI</h3>
-                  <p className="timeline-org">Healthcare AI Laboratory, Amrita Vishwa Vidyapeetham</p>
+                  <span className="timeline-date">Mar 2025 – Jun 2026</span>
+                  <h3 className="timeline-title">Research Intern — Healthcare AI</h3>
+                  <p className="timeline-org">Amrita University, Bengaluru, India (Supervisor: Dr. B. Venkatesh)</p>
                   <p className="timeline-desc">
-                    Leading machine learning investigations into calibrated clinical risk algorithms, multimodal medical imaging diagnostics, and physiological signal modeling. Co-authored 12+ peer-reviewed publications, including research published in the Q1 journal <em>Engineered Science</em> and awarded the <strong>IEEE ICKECS 2026 Best Paper Award</strong>.
+                    Investigated heart attack risk prediction to improve the reliability of clinical risk assessment through deep learning and probabilistic calibration. Built and trained a bagged Multilayer Perceptron (MLP) ensemble framework in Python using scikit-learn and PyTorch, integrating Bayesian bootstrap aggregation with multi-technique calibration (Platt scaling, isotonic regression, histogram binning). Achieved 96.42% accuracy, Brier score of 0.0489, 0.97 recall, reducing false negative rates to 3%. Co-authored research published in the Q1-indexed journal <em>Engineered Science</em> (DOI: 10.30919/es2461).
                   </p>
                 </div>
               </div>
 
-              {/* Item 3: ML Minds Co-Founder */}
+              {/* Leadership: ML Minds */}
               <div className="timeline-item reveal">
                 <div className="timeline-dot">
                   <span className="timeline-dot-inner" />
                 </div>
                 <div className="timeline-card">
-                  <span className="timeline-date">Jan 2024 – Present</span>
-                  <h3 className="timeline-title">Co-Founder &amp; Technical Lead</h3>
-                  <p className="timeline-org">ML Minds (Student AI Research Community)</p>
+                  <span className="timeline-date">Sep 2024 – Present</span>
+                  <h3 className="timeline-title">Co-Founder &amp; Lead Developer</h3>
+                  <p className="timeline-org">ML Minds, Amrita Vishwa Vidyapeetham</p>
                   <p className="timeline-desc">
-                    Co-founded Amrita's student-led machine learning collective. Designed and delivered multi-week hands-on deep learning bootcamps on Transformers, PyTorch, and healthcare datasets for 250+ undergraduate peers. Facilitating open-source reproducibility projects.
+                    Co-founded and led a student-driven machine learning community, organizing technical workshops, coding bootcamps, and research initiatives. Mentored peer members on ML concepts and open-source projects, fostering a collaborative learning environment across cohorts.
                   </p>
                 </div>
               </div>
 
-              {/* Item 4: AMAL Club Vice President */}
+              {/* Leadership: Powerlifting Captain */}
               <div className="timeline-item reveal">
                 <div className="timeline-dot">
                   <span className="timeline-dot-inner" />
                 </div>
                 <div className="timeline-card">
-                  <span className="timeline-date">2023 – 2025</span>
-                  <h3 className="timeline-title">Vice President</h3>
-                  <p className="timeline-org">AMAL Club (Amrita Management &amp; Applied Leadership)</p>
+                  <span className="timeline-date">Jul 2024 – Feb 2025</span>
+                  <h3 className="timeline-title">Captain — University Powerlifting Team</h3>
+                  <p className="timeline-org">Amrita Vishwa Vidyapeetham Sports Council</p>
                   <p className="timeline-desc">
-                    Elected Vice President after leading public speaking and strategic thinking initiatives. Bridged academic theory with practical managerial frameworks, coordinated student engagement programs, and organized university leadership events.
+                    Guided squad members to compete in competitive district and state powerlifting championships. Coordinated structured training and nutrition regimens, leading the team to secure 1st place overall in the district championship.
                   </p>
                 </div>
               </div>
 
-              {/* Item 5: Sankhya Math Club */}
+              {/* Leadership: Kalanjali 2025 Coordinator */}
               <div className="timeline-item reveal">
                 <div className="timeline-dot">
                   <span className="timeline-dot-inner" />
                 </div>
                 <div className="timeline-card">
-                  <span className="timeline-date">2023 – 2025</span>
-                  <h3 className="timeline-title">Student Mentor &amp; Mathematical Specialist</h3>
-                  <p className="timeline-org">Sankhya Mathematics Club, Amrita University</p>
+                  <span className="timeline-date">Apr 2025</span>
+                  <h3 className="timeline-title">Cultural Coordinator — Kalanjali 2025 (College Fest)</h3>
+                  <p className="timeline-org">Amrita Vishwa Vidyapeetham</p>
                   <p className="timeline-desc">
-                    Applied problem-solving frameworks developed through the Math Olympiad and JEE preparation to mentor students in discrete mathematics, linear algebra, and competitive mathematical problem solving.
+                    Directed event logistics, cross-functional student teams, stage management, and multi-college participant registration for the college's flagship annual cultural festival.
                   </p>
                 </div>
               </div>
@@ -699,17 +931,13 @@ export default function Home() {
         </section>
 
         {/* ==============================================================
-            AWARDS & HONORS SECTION
+            AWARDS & HONORS SECTION (MATCHING RESUME)
             ============================================================== */}
         <section className="section" id="awards">
           <div className="container">
-            <h2 className="section-title reveal">Awards &amp; Honors</h2>
-            <p className="reveal" style={{ color: "var(--text-secondary)", marginBottom: "2rem", maxWidth: "750px" }}>
-              Academic distinctions, competitive mathematics achievements, and athletic leadership honors.
-            </p>
+            <h2 className="section-title reveal">Awards &amp; Distinctions</h2>
 
             <div className="awards-featured reveal reveal-delay-1" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(310px, 1fr))", gap: "1.25rem" }}>
-              {/* Award 1 */}
               <div className="award-card featured">
                 <div className="award-header" style={{ display: "flex", alignItems: "center", gap: "1rem", marginBottom: "0.75rem" }}>
                   <div className="award-icon" style={{ fontSize: "1.8rem" }}>🏆</div>
@@ -719,12 +947,37 @@ export default function Home() {
                   </div>
                 </div>
                 <p className="award-desc">
-                  Honored with the Best Paper Award for research on explainable deep stacking ensembles for early cardiovascular clinical risk stratification.
+                  Awarded Best Paper at the 2026 International Conference on Knowledge Engineering and Communication Systems for <em>"Detecting Health Misinformation: AI Solutions for Medical and Policy Content."</em>
                 </p>
               </div>
 
-              {/* Award 2 */}
               <div className="award-card featured">
+                <div className="award-header" style={{ display: "flex", alignItems: "center", gap: "1rem", marginBottom: "0.75rem" }}>
+                  <div className="award-icon" style={{ fontSize: "1.8rem" }}>🌟</div>
+                  <div>
+                    <h3 className="award-title" style={{ fontSize: "1.1rem" }}>Top 3% Student Researcher Recognition</h3>
+                    <p className="award-org" style={{ color: "var(--accent)", fontSize: "0.85rem", fontWeight: "600" }}>Amrita Vishwa Vidyapeetham</p>
+                  </div>
+                </div>
+                <p className="award-desc">
+                  Formally recognized among the top 3% of student researchers across the university for prolific research contributions and peer-reviewed publications.
+                </p>
+              </div>
+
+              <div className="award-card">
+                <div className="award-header" style={{ display: "flex", alignItems: "center", gap: "1rem", marginBottom: "0.75rem" }}>
+                  <div className="award-icon" style={{ fontSize: "1.8rem" }}>🥇</div>
+                  <div>
+                    <h3 className="award-title" style={{ fontSize: "1.1rem" }}>1st Place — Arista Networks Boot Camp 2026</h3>
+                    <p className="award-org" style={{ color: "var(--accent)", fontSize: "0.85rem", fontWeight: "600" }}>Arista Networks</p>
+                  </div>
+                </div>
+                <p className="award-desc">
+                  Secured 1st place in the competitive Arista Networks Boot Camp 2026 with an exceptional score of 86%.
+                </p>
+              </div>
+
+              <div className="award-card">
                 <div className="award-header" style={{ display: "flex", alignItems: "center", gap: "1rem", marginBottom: "0.75rem" }}>
                   <div className="award-icon" style={{ fontSize: "1.8rem" }}>🥇</div>
                   <div>
@@ -733,11 +986,10 @@ export default function Home() {
                   </div>
                 </div>
                 <p className="award-desc">
-                  Earned the Gold Medal in the prestigious Science Olympiad Foundation International Mathematics Olympiad through rigorous analytical problem solving.
+                  Earned the Gold Medal in the Science Olympiad Foundation International Mathematics Olympiad through rigorous analytical problem-solving.
                 </p>
               </div>
 
-              {/* Award 3 */}
               <div className="award-card">
                 <div className="award-header" style={{ display: "flex", alignItems: "center", gap: "1rem", marginBottom: "0.75rem" }}>
                   <div className="award-icon" style={{ fontSize: "1.8rem" }}>💯</div>
@@ -747,11 +999,10 @@ export default function Home() {
                   </div>
                 </div>
                 <p className="award-desc">
-                  Secured a perfect 100% aggregate score in Class 10 Board Examinations, earning recognition from the school and local academic community.
+                  Achieved a perfect 100% aggregate score in Class 10 Board Examinations, earning academic honors.
                 </p>
               </div>
 
-              {/* Award 4 */}
               <div className="award-card">
                 <div className="award-header" style={{ display: "flex", alignItems: "center", gap: "1rem", marginBottom: "0.75rem" }}>
                   <div className="award-icon" style={{ fontSize: "1.8rem" }}>⚡</div>
@@ -761,25 +1012,23 @@ export default function Home() {
                   </div>
                 </div>
                 <p className="award-desc">
-                  Ranked in the 95th percentile among over 1 million candidates across India in one of the world's most competitive engineering entrance exams.
+                  Ranked in the 95th percentile among over 1 million candidates nationwide in India's prestigious engineering examination.
                 </p>
               </div>
 
-              {/* Award 5 */}
               <div className="award-card">
                 <div className="award-header" style={{ display: "flex", alignItems: "center", gap: "1rem", marginBottom: "0.75rem" }}>
                   <div className="award-icon" style={{ fontSize: "1.8rem" }}>🏋️</div>
                   <div>
-                    <h3 className="award-title" style={{ fontSize: "1.1rem" }}>District Gold &amp; State Silver Medalist</h3>
-                    <p className="award-org" style={{ color: "var(--accent)", fontSize: "0.85rem", fontWeight: "600" }}>Varsity Powerlifting Captain</p>
+                    <h3 className="award-title" style={{ fontSize: "1.1rem" }}>District Gold &amp; State Silver in Powerlifting</h3>
+                    <p className="award-org" style={{ color: "var(--accent)", fontSize: "0.85rem", fontWeight: "600" }}>Varsity Team Captain</p>
                   </div>
                 </div>
                 <p className="award-desc">
-                  Won 1st Place &amp; Gold Medal in District Powerlifting, Silver Medal at the State level, and captained Amrita University to the overall team trophy.
+                  Won 1st Place &amp; Gold Medal at the District Powerlifting Championship, Silver Medal at State level, bench-pressing 70kg in first year.
                 </p>
               </div>
 
-              {/* Award 6 */}
               <div className="award-card">
                 <div className="award-header" style={{ display: "flex", alignItems: "center", gap: "1rem", marginBottom: "0.75rem" }}>
                   <div className="award-icon" style={{ fontSize: "1.8rem" }}>🏊</div>
@@ -789,7 +1038,7 @@ export default function Home() {
                   </div>
                 </div>
                 <p className="award-desc">
-                  Gold Medalist at the state-level swimming championship while concurrently preparing for national engineering entrance examinations.
+                  Won the Gold Medal at the state-level swimming championship in Class 12, successfully balancing competitive athletics with academics.
                 </p>
               </div>
             </div>
@@ -797,365 +1046,61 @@ export default function Home() {
         </section>
 
         {/* ==============================================================
-            SELECTED PROJECTS SECTION (WITH GENERATED PICS)
-            ============================================================== */}
-        <section className="section" id="projects">
-          <div className="container">
-            <h2 className="section-title reveal">Selected Projects</h2>
-            <p className="reveal" style={{ color: "var(--text-secondary)", marginBottom: "2rem", maxWidth: "750px" }}>
-              Key machine learning, computer vision, and systems engineering projects developed with reproducible code and clinical validation.
-            </p>
-
-            <div className="pub-grid">
-              {/* Project 1 */}
-              <article className="pub-card reveal">
-                <div className="pub-media" data-media-type="image">
-                  <img
-                    src="/assets/projects/heart-disease-ai.png"
-                    alt="CardioRisk-AI Project Visual"
-                    loading="lazy"
-                  />
-                </div>
-                <div className="pub-content">
-                  <div className="pub-tags">
-                    <span className="pub-tag">Clinical ML</span>
-                    <span className="pub-tag">SHAP Explainability</span>
-                    <span className="pub-tag">Stacking</span>
-                  </div>
-                  <h3 className="pub-title">
-                    CardioRisk-AI: Explainable Clinical Stacking Ensemble Platform
-                  </h3>
-                  <p className="pub-authors">
-                    Stacking Meta-Learner (XGBoost + Random Forest + DNN) • SHAP Feature Attribution • 94.2% ROC-AUC
-                  </p>
-                  <p className="pub-venue">
-                    Python, PyTorch, Scikit-Learn, SHAP, FastAPI, Next.js
-                  </p>
-                  <p style={{ fontSize: "0.9rem", color: "var(--text-secondary)", margin: "0.5rem 0 1rem" }}>
-                    Engineered an end-to-end clinical decision support platform for multi-factor coronary heart disease prediction. Provides interactive SHAP waterfall attribution plots so clinicians can inspect exact biometric risk drivers.
-                  </p>
-                  <div className="pub-links">
-                    <a
-                      className="pub-link"
-                      href="https://github.com/VIBHAS777/portfolio"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                        <polyline points="16 18 22 12 16 6" />
-                        <polyline points="8 6 2 12 8 18" />
-                      </svg>
-                      GitHub Repo
-                    </a>
-                    <a
-                      className="pub-link"
-                      href="https://portfolio-vibhasf17-4811.vercel.app/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Live Demo
-                    </a>
-                  </div>
-                </div>
-              </article>
-
-              {/* Project 2 */}
-              <article className="pub-card reveal">
-                <div className="pub-media" data-media-type="image">
-                  <img
-                    src="/assets/projects/medical-imaging-ai.png"
-                    alt="NeuroVision Pathology Detection Visual"
-                    loading="lazy"
-                  />
-                </div>
-                <div className="pub-content">
-                  <div className="pub-tags">
-                    <span className="pub-tag">Computer Vision</span>
-                    <span className="pub-tag">ViT &amp; DenseNet</span>
-                    <span className="pub-tag">Grad-CAM</span>
-                  </div>
-                  <h3 className="pub-title">
-                    NeuroVision: Radiograph Pathology Detection &amp; Heatmapping
-                  </h3>
-                  <p className="pub-authors">
-                    Vision Transformer + DenseNet-121 • Grad-CAM Spatial Localization • 98.2% Sensitivity
-                  </p>
-                  <p className="pub-venue">
-                    PyTorch, TorchVision, OpenCV, Albumentations, Streamlit
-                  </p>
-                  <p style={{ fontSize: "0.9rem", color: "var(--text-secondary)", margin: "0.5rem 0 1rem" }}>
-                    Automated multi-label thoracic pathology detection pipeline analyzing chest radiographs. Generates high-resolution Grad-CAM heatmaps overlaying lung fields to verify deep learning activations against radiologist findings.
-                  </p>
-                  <div className="pub-links">
-                    <a
-                      className="pub-link"
-                      href="https://github.com/VIBHAS777/portfolio"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                        <polyline points="16 18 22 12 16 6" />
-                        <polyline points="8 6 2 12 8 18" />
-                      </svg>
-                      GitHub Repo
-                    </a>
-                  </div>
-                </div>
-              </article>
-
-              {/* Project 3 */}
-              <article className="pub-card reveal">
-                <div className="pub-media" data-media-type="image">
-                  <img
-                    src="/assets/projects/seizure-detection-iot.png"
-                    alt="EpiPulse Wearable EEG Seizure Monitor Visual"
-                    loading="lazy"
-                  />
-                </div>
-                <div className="pub-content">
-                  <div className="pub-tags">
-                    <span className="pub-tag">Biomedical IoT</span>
-                    <span className="pub-tag">Edge AI</span>
-                    <span className="pub-tag">Bi-LSTM</span>
-                  </div>
-                  <h3 className="pub-title">
-                    EpiPulse: Real-Time Wearable EEG Seizure Detection
-                  </h3>
-                  <p className="pub-authors">
-                    Attention Bi-LSTM • Continuous Scalp EEG • Sub-0.35s Latency • 96.4% Accuracy
-                  </p>
-                  <p className="pub-venue">
-                    Python, MNE-Python, SciPy, TensorFlow Lite, Embedded Edge Microcontroller
-                  </p>
-                  <p style={{ fontSize: "0.9rem", color: "var(--text-secondary)", margin: "0.5rem 0 1rem" }}>
-                    Wearable edge computing system for continuous multi-channel EEG monitoring. Detects epileptiform spike-wave discharge with sub-second response times to initiate patient safety warnings and caregiver notifications.
-                  </p>
-                  <div className="pub-links">
-                    <a
-                      className="pub-link"
-                      href="https://github.com/VIBHAS777/portfolio"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                        <polyline points="16 18 22 12 16 6" />
-                        <polyline points="8 6 2 12 8 18" />
-                      </svg>
-                      GitHub Repo
-                    </a>
-                  </div>
-                </div>
-              </article>
-
-              {/* Project 4 */}
-              <article className="pub-card reveal">
-                <div className="pub-media" data-media-type="image">
-                  <img
-                    src="/assets/projects/telemedicine-sdn.png"
-                    alt="TeleSDN Priority Flow Routing Visual"
-                    loading="lazy"
-                  />
-                </div>
-                <div className="pub-content">
-                  <div className="pub-tags">
-                    <span className="pub-tag">Networking</span>
-                    <span className="pub-tag">SDN</span>
-                    <span className="pub-tag">OpenFlow 1.3</span>
-                  </div>
-                  <h3 className="pub-title">
-                    TeleSDN: Priority-Aware OpenFlow Controller for Telemedicine
-                  </h3>
-                  <p className="pub-authors">
-                    Software-Defined Networking • QoS Slicing • Guaranteed &lt;5ms Packet Latency SLA
-                  </p>
-                  <p className="pub-venue">
-                    Python, Ryu SDN Controller, Mininet, OpenFlow 1.3, Wireshark
-                  </p>
-                  <p style={{ fontSize: "0.9rem", color: "var(--text-secondary)", margin: "0.5rem 0 1rem" }}>
-                    Engineered an intelligent traffic-slicing controller prioritizing robotic telesurgery video feeds and critical sensor telemetry over congested hospital networks, maintaining strict sub-5ms delay bounds under 95% line saturation.
-                  </p>
-                  <div className="pub-links">
-                    <a
-                      className="pub-link"
-                      href="https://github.com/VIBHAS777/portfolio"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                        <polyline points="16 18 22 12 16 6" />
-                        <polyline points="8 6 2 12 8 18" />
-                      </svg>
-                      GitHub Repo
-                    </a>
-                  </div>
-                </div>
-              </article>
-
-              {/* Project 5 */}
-              <article className="pub-card reveal">
-                <div className="pub-media" data-media-type="image">
-                  <img
-                    src="/assets/projects/distributed-deadlock-rnn.png"
-                    alt="DeadlockRNN Cycle Detection Visual"
-                    loading="lazy"
-                  />
-                </div>
-                <div className="pub-content">
-                  <div className="pub-tags">
-                    <span className="pub-tag">Distributed Systems</span>
-                    <span className="pub-tag">Deep Learning</span>
-                    <span className="pub-tag">Cloud OS</span>
-                  </div>
-                  <h3 className="pub-title">
-                    DeadlockRNN: Proactive Deadlock Prediction in Distributed Cloud OS
-                  </h3>
-                  <p className="pub-authors">
-                    Resource Wait-For Graph (WFG) • LSTM Sequence Modeling • 4.3ms Detection Latency
-                  </p>
-                  <p className="pub-venue">
-                    Python, PyTorch, NetworkX, ZeroMQ, Docker Clusters
-                  </p>
-                  <p style={{ fontSize: "0.9rem", color: "var(--text-secondary)", margin: "0.5rem 0 1rem" }}>
-                    Modeled resource allocation wait-for graphs as temporal sequence embeddings. Pre-emptively identifies circular wait deadlocks across 500-node simulated clusters 8.8× faster than traditional distributed edge-chasing algorithms.
-                  </p>
-                  <div className="pub-links">
-                    <a
-                      className="pub-link"
-                      href="https://github.com/VIBHAS777/portfolio"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                        <polyline points="16 18 22 12 16 6" />
-                        <polyline points="8 6 2 12 8 18" />
-                      </svg>
-                      GitHub Repo
-                    </a>
-                  </div>
-                </div>
-              </article>
-            </div>
-          </div>
-        </section>
-
-        {/* ==============================================================
-            WRITING & RESEARCH NOTES SECTION
-            ============================================================== */}
-        <section className="section" id="writing">
-          <div className="container">
-            <h2 className="section-title reveal">Research Notes &amp; Writing</h2>
-            <p className="reveal" style={{ color: "var(--text-secondary)", marginBottom: "2rem", maxWidth: "750px" }}>
-              Reflections on clinical AI safety, mathematical problem solving, and graph neural network dynamics.
-            </p>
-
-            <div className="writing-grid reveal-stagger reveal">
-              <div className="writing-card">
-                <h3 className="writing-card-title">
-                  Calibrating Neural Confidence for Clinical Healthcare Decisions
-                </h3>
-                <p className="writing-card-excerpt">
-                  Why uncalibrated softmax probabilities cannot be trusted as diagnostic certainty in medical triage, and how temperature scaling and conformal prediction provide safe statistical coverage.
-                </p>
-                <span className="writing-card-meta">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <circle cx="12" cy="12" r="10" />
-                    <polyline points="12 6 12 12 16 14" />
-                  </svg>
-                  8 min read • Clinical Machine Learning
-                </span>
-              </div>
-
-              <div className="writing-card">
-                <h3 className="writing-card-title">
-                  From Weakness to Strength: The Problem-Solving Philosophy of the Math Olympiad
-                </h3>
-                <p className="writing-card-excerpt">
-                  A personal retrospective on overcoming childhood struggles in mathematics, developing deliberate practice systems for the Olympiad, and how rigorous proof structures sharpen intuition in AI research.
-                </p>
-                <span className="writing-card-meta">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <circle cx="12" cy="12" r="10" />
-                    <polyline points="12 6 12 12 16 14" />
-                  </svg>
-                  6 min read • Mathematical Thinking &amp; Mindset
-                </span>
-              </div>
-
-              <div className="writing-card">
-                <h3 className="writing-card-title">
-                  Graph Neural Networks for Epidemic and Misinformation Cascades
-                </h3>
-                <p className="writing-card-excerpt">
-                  Analyzing diffusion dynamics across social networks: how message passing on heterogeneous graphs uncovers structural viral patterns in biomedical hoaxes.
-                </p>
-                <span className="writing-card-meta">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <circle cx="12" cy="12" r="10" />
-                    <polyline points="12 6 12 12 16 14" />
-                  </svg>
-                  10 min read • Graph Machine Learning
-                </span>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* ==============================================================
-            SERVICE & LEADERSHIP SECTION
+            TECHNICAL SKILLS SECTION (FROM RESUME)
             ============================================================== */}
         <section className="section" id="service">
           <div className="container">
-            <h2 className="section-title reveal">Service &amp; Leadership</h2>
+            <h2 className="section-title reveal">Technical Arsenal &amp; Tools</h2>
             <p className="reveal" style={{ color: "var(--text-secondary)", marginBottom: "2rem", maxWidth: "750px" }}>
-              Academic mentorship, student leadership, and athletic representation.
+              Core languages, machine learning frameworks, clinical imaging toolkits, and developer environments from my resume.
             </p>
 
-            <div className="awards-service reveal reveal-delay-1" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "1rem" }}>
-              <div className="award-card small">
-                <h3 className="award-title" style={{ fontSize: "1.05rem" }}>Co-Founder &amp; Technical Lead</h3>
-                <p className="award-desc" style={{ color: "var(--accent)", fontWeight: "600", marginBottom: "0.25rem" }}>ML Minds Community</p>
-                <p className="award-desc">
-                  Trained over 250+ student researchers in PyTorch, deep learning pipelines, and research paper replication.
+            <div className="awards-service reveal reveal-delay-1" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "1.25rem" }}>
+              <div className="award-card">
+                <h3 className="award-title" style={{ fontSize: "1.05rem" }}>AI &amp; Deep Learning</h3>
+                <p className="award-desc" style={{ color: "var(--accent)", fontWeight: "600", marginBottom: "0.35rem" }}>Frameworks &amp; Toolkits</p>
+                <p className="award-desc" style={{ fontSize: "0.88rem" }}>
+                  PyTorch, TensorFlow, Keras, Hugging Face Transformers, Scikit-learn, XGBoost, LightGBM, SHAP, Grad-CAM, MLflow, MONAI, NiBabel.
                 </p>
               </div>
 
-              <div className="award-card small">
-                <h3 className="award-title" style={{ fontSize: "1.05rem" }}>Vice President</h3>
-                <p className="award-desc" style={{ color: "var(--accent)", fontWeight: "600", marginBottom: "0.25rem" }}>AMAL Leadership Club</p>
-                <p className="award-desc">
-                  Spearheaded strategic leadership workshops, student outreach panels, and executive operations.
+              <div className="award-card">
+                <h3 className="award-title" style={{ fontSize: "1.05rem" }}>Core Programming Languages</h3>
+                <p className="award-desc" style={{ color: "var(--accent)", fontWeight: "600", marginBottom: "0.35rem" }}>Systems &amp; Scripting</p>
+                <p className="award-desc" style={{ fontSize: "0.88rem" }}>
+                  Python, C, C++, Java, TypeScript, Go, Rust, Ruby, SQL, Bash.
                 </p>
               </div>
 
-              <div className="award-card small">
-                <h3 className="award-title" style={{ fontSize: "1.05rem" }}>Student Mentor</h3>
-                <p className="award-desc" style={{ color: "var(--accent)", fontWeight: "600", marginBottom: "0.25rem" }}>Sankhya Mathematics Club</p>
-                <p className="award-desc">
-                  Mentored engineering undergraduates in linear algebra, discrete math proofs, and competitive problem solving.
+              <div className="award-card">
+                <h3 className="award-title" style={{ fontSize: "1.05rem" }}>Healthcare &amp; Biomedical</h3>
+                <p className="award-desc" style={{ color: "var(--accent)", fontWeight: "600", marginBottom: "0.35rem" }}>Clinical Standards</p>
+                <p className="award-desc" style={{ fontSize: "0.88rem" }}>
+                  FHIR, HL7, Medical Image Segmentation, Radiograph Grad-CAM, Photoplethysmography (PPG), ECG/EEG Signal Analysis, Scipy.
                 </p>
               </div>
 
-              <div className="award-card small">
-                <h3 className="award-title" style={{ fontSize: "1.05rem" }}>Cultural Coordinator</h3>
-                <p className="award-desc" style={{ color: "var(--accent)", fontWeight: "600", marginBottom: "0.25rem" }}>Dasttan &amp; Kalakriti National Fests</p>
-                <p className="award-desc">
-                  Managed multi-department logistics, stage coordination, and participant scheduling for national university festivals.
+              <div className="award-card">
+                <h3 className="award-title" style={{ fontSize: "1.05rem" }}>Full-Stack &amp; Systems</h3>
+                <p className="award-desc" style={{ color: "var(--accent)", fontWeight: "600", marginBottom: "0.35rem" }}>Web &amp; APIs</p>
+                <p className="award-desc" style={{ fontSize: "0.88rem" }}>
+                  React.js, Next.js, Node.js, Express.js, FastAPI, Flask, Django, PostgreSQL, MongoDB.
                 </p>
               </div>
 
-              <div className="award-card small">
-                <h3 className="award-title" style={{ fontSize: "1.05rem" }}>Varsity Team Captain</h3>
-                <p className="award-desc" style={{ color: "var(--accent)", fontWeight: "600", marginBottom: "0.25rem" }}>Amrita Powerlifting Team</p>
-                <p className="award-desc">
-                  Led the university powerlifting squad to 1st place overall in district championships while training teammates.
+              <div className="award-card">
+                <h3 className="award-title" style={{ fontSize: "1.05rem" }}>DevOps, Cloud &amp; Tools</h3>
+                <p className="award-desc" style={{ color: "var(--accent)", fontWeight: "600", marginBottom: "0.35rem" }}>Infrastructure</p>
+                <p className="award-desc" style={{ fontSize: "0.88rem" }}>
+                  Docker, Kubernetes, Git, GitHub, Jenkins, Postman, Linux/Bash, VS Code, Jupyter, Terraform.
                 </p>
               </div>
 
-              <div className="award-card small">
-                <h3 className="award-title" style={{ fontSize: "1.05rem" }}>School Head Boy</h3>
-                <p className="award-desc" style={{ color: "var(--accent)", fontWeight: "600", marginBottom: "0.25rem" }}>Student Leadership Council</p>
-                <p className="award-desc">
-                  Represented the entire student body, organized inter-school events, and mediated student-administration dialogues.
+              <div className="award-card">
+                <h3 className="award-title" style={{ fontSize: "1.05rem" }}>Interests &amp; Leadership</h3>
+                <p className="award-desc" style={{ color: "var(--accent)", fontWeight: "600", marginBottom: "0.35rem" }}>Extracurriculars</p>
+                <p className="award-desc" style={{ fontSize: "0.88rem" }}>
+                  AI/ML Research, Competitive Programming, Open-Source Development, Technical Mentoring, Competitive Powerlifting.
                 </p>
               </div>
             </div>
@@ -1198,7 +1143,7 @@ export default function Home() {
             </a>
           </div>
           <p className="footer-text">
-            © {new Date().getFullYear()} Vibhas Reddy Araveeti. Built with Next.js &amp; styled for academic research.
+            © {new Date().getFullYear()} Vibhas Reddy Araveeti. Academic research portfolio.
           </p>
         </div>
       </footer>

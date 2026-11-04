@@ -47,12 +47,14 @@ export default function App({ Component, pageProps }) {
           rel="stylesheet"
         />
 
-        {/* Theme init script to prevent flash */}
+        {/* Theme init script to default to light mode */}
         <script
           dangerouslySetInnerHTML={{
             __html: `(function() {
               var theme = localStorage.getItem('theme-v2');
-              if (theme === 'light') {
+              if (theme === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+              } else {
                 document.documentElement.setAttribute('data-theme', 'light');
               }
             })();`,
