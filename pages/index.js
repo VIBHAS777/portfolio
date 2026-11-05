@@ -285,9 +285,6 @@ export default function Home() {
                     As a Research Intern at Amrita under the supervision of Dr. B. Venkatesh, I built bagged Multilayer Perceptron (MLP) ensembles with Bayesian bootstrap aggregation and multi-technique probability calibration (Platt scaling, isotonic regression), reducing clinical false negative rates to 3% with a Brier score of 0.0489.
                   </p>
 
-                  <p>
-                    Beyond research, I am a <strong>Gold Medalist in the SOF International Mathematics Olympiad (IMO)</strong>, achieved <strong>100% marks in Class 10</strong>, and scored in the <strong>95th percentile in JEE Main</strong>. I co-founded and lead <strong>ML Minds</strong> (mentoring 250+ student peers), serve as Captain of the Amrita University <strong>Powerlifting Team</strong> (District Gold Medalist &amp; State Silver Medalist), and previously won a State Swimming Championship Gold.
-                  </p>
 
                   <p>
                     I welcome research collaborations, discussions on clinical machine learning, and opportunities. Please feel free to reach out at{" "}
@@ -415,32 +412,6 @@ export default function Home() {
                 </div>
               </article>
 
-              {/* Resume Project 4: RNN-Based Deadlock Detection */}
-              <article className="pub-card reveal">
-                <div className="pub-media" data-media-type="image">
-                  <img
-                    src="/assets/projects/rnn-cpu-deadlock.jpg"
-                    alt="RNN-Based Deadlock Detection for CPU Performance Optimization"
-                    loading="lazy"
-                  />
-                </div>
-                <div className="pub-content">
-                  <div className="pub-tags">
-                    <span className="pub-tag">Operating Systems</span>
-                    <span className="pub-tag">PyTorch 2-Layer RNN</span>
-                    <span className="pub-tag">Benchmarking</span>
-                  </div>
-                  <h3 className="pub-title">
-                    RNN-Based Deadlock Detection for CPU Performance Optimization
-                  </h3>
-                  <p className="pub-authors">
-                    Feb 2025 – May 2025 • <strong>90.25% Test Accuracy</strong> • <strong>CPU Score: 70 → 98.02 (+28.02% Boost)</strong>
-                  </p>
-                  <p style={{ fontSize: "0.9rem", color: "var(--text-secondary)", margin: "0.5rem 0 0", lineHeight: "1.6" }}>
-                    Architected a Python/PyTorch system that translated simulated OS process and resource logs into sequential one-hot encoded vectors, capturing temporal dependency patterns. A 2-layer recurrent neural network predicts impending circular-wait deadlocks with 90.25% accuracy, allowing preemptive resolution that raised simulated CPU benchmark performance from 70 to 98.02.
-                  </p>
-                </div>
-              </article>
 
               {/* Resume Project 5: Priority-Aware SDN */}
               <article className="pub-card reveal">
